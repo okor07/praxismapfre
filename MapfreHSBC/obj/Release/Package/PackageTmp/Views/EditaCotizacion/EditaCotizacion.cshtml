@@ -1,0 +1,315 @@
+﻿@model MapfreHSBC.Models.Cotizacion.EditCotizacion.Datos
+@{
+    ViewBag.Title = "EditaCotizacion";
+    Layout = "~/Views/Shared/_Master.cshtml";
+
+}
+
+@using (Html.BeginForm("EditaCotizacion", "EditaCotizacion", FormMethod.Post,
+                                      new { enctype = "multipart/form-data" }))
+    {
+    @Html.ValidationSummary(true)
+
+
+<table style="width:100%!important;">
+    <tr>
+        <td colspan="4">
+            <div class="TitCotiza11BlaBold" style="width:100%!important;">Datos del Prospécto</div>
+        </td>
+    </tr>
+    <tr>
+    <tr>
+        <td class="BOLD">Fecha de cotización:</td>
+        <td>@Html.TextBox("txtFechaCotizacion", @DateTime.Now.ToString("dd-MMM-yy"), new { @readonly = "readonly", @disabled = "true" })</td>
+        <td class="BOLD" name="noCotizacion">Número de cotizacion:</td>
+        <td name="noCotizacion" >@Html.TextBox("txtNoCotizacion", "123123", new { @readonly = "readonly", @disabled = "true", @style = "" } )</td>
+    </tr>
+    <tr>
+        <td class="BOLD">Fecha de nacimiento:</td>
+        <td>@Html.TextBox("txtFecNacimiento", "11/07/1990")</td>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td class="BOLD">Sexo:</td>
+        <td>
+        @*@Html.HiddenFor(model => model.sexo)
+        @if (Model.sexo == 0)
+        {
+            @Html.Label("H")
+        }
+        else
+        { 
+            @Html.Label("M")
+        }*@
+        
+            @Html.DropDownListFor(model => model.sexo, new SelectList(ViewBag.Sexo, "Value", "Text"))
+
+
+        </td>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td class="BOLD">Correo electrónico:<span class="Txt_aviso"> *</span></td>
+        <td><a href="mailto:@Html.DisplayFor(model => model.correoElectronico)">ccc@bwmeill.net</a></td>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <div class="TitCotiza11BlaBold" style="width:100%!important;">Datos de la cotización</div>
+        </td>
+    </tr>
+    <tr>
+        <td class="BOLD">Perfil:<span class="Txt_aviso"> *</span></td>
+        <td>@Html.DropDownList("prefil", new SelectList(ViewBag.Perfil, "Value", "Text"))</td>
+        <td class="BOLD">Prima inicial:<span class="Txt_aviso"> *</span></td>
+        <td>@Html.TextBox("primaInicial","10000")</td>
+    </tr>
+    <tr>
+        <td class="BOLD">Modalidad:<span class="Txt_aviso"> *</span></td>
+        <td>@Html.DropDownList("modalidad", new SelectList(ViewBag.Modalidad, "Value", "Text"))</td>
+        <td class="BOLD">Aportaciones periodicas:<span class="Txt_aviso"> *</span></td>
+        <td>@Html.TextBox("aportacionesPeriodicas","1000")</td>
+    </tr>
+    <tr>
+        <td class="BOLD">Moneda:<span class="Txt_aviso"> *</span></td>
+        <td>@Html.TextBox("moneda","Pesos")</td>
+        <td class="BOLD">Periodicidad:<span class="Txt_aviso"> *</span></td>
+        <td>@Html.DropDownList("periodicidad", new SelectList(ViewBag.Periodicidad, "Value", "Text"))</td>
+    </tr>
+    <tr>
+        <td class="BOLD">Plazo:<span class="Txt_aviso"> *</span></td>
+        <td>@Html.DropDownList("plazo", new SelectList(ViewBag.Plazo, "Value", "Text"))</td>
+        <td class="BOLD">Forma de pago:<span class="Txt_aviso"> *</span></td>
+        <td>@Html.TextBox("formaPago","Mensual")</td>
+    </tr>
+    <tr>
+        @*<td colspan="2" style="vertical-align:top;" align="left">
+            <table style="width:85%!important;">
+                <tr>
+                    <td colspan="4" class="TitCotiza11BlaBold">Distribución de fondos de inversión</td>
+                </tr>
+                <tr>
+                    <td>
+                        @{ 
+                            WebGrid gridDFI = new WebGrid(source: ViewBag.DSDistribucionFI, 
+                                                          rowsPerPage: 5, 
+                                                          canPage: true);
+                        }
+
+                        @gridDFI.GetHtml(htmlAttributes: new { id = "gdvDistribucion" }, 
+                                         columns: ViewBag.GVDistribucionFI,
+                                         tableStyle: "wgTable",
+                                         alternatingRowStyle: "wgRowAlter",
+                                         rowStyle: "wgRow")
+                    </td>
+                </tr>
+            </table>
+        </td>*@
+        <td colspan="2" style="vertical-align:top" align="right">
+            <table style="width:100%!important;">
+                <tr>
+                    <td colspan="2" class="TitCotiza11BlaBold">Coberturas</td>
+                </tr>
+                <tr>
+                    <td>
+                        @{
+                            WebGrid gridCob = new WebGrid(source: ViewBag.DSCoberturas, 
+                                                          rowsPerPage: 5, 
+                                                          canPage: true);
+                        }
+
+                        @*@gridCob.GetHtml(htmlAttributes: new { id = "gdvCoberturas" }, 
+                                         columns: ViewBag.GVCoberturas,
+                                         tableStyle: "wgTable wgDisabled",
+                                         alternatingRowStyle: "wgRowAlter",
+                                         rowStyle: "wgRow")*@
+                    </td>
+                </tr>
+                <tr>
+                    <td><br /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                        <table id="tblPrecio" style="width:100%!important; display:none;">
+                            <tr>
+                                <td colspan="2" class="TitCotiza11BlaBold">Precio del seguro</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="gridPrecios"></div>
+                                </td>
+                            </tr>
+            </table>
+                            </div>
+        </td>
+    </tr>
+</table>
+        </td>
+    </tr>
+</table>
+
+    <center>
+        <table>
+            <tr>
+                <td style="width:33%"><input id="btnRecotizar" type="button" value="RECOTIZAR" class="btnAction" style="display:none;" onclick="javascript:GetPrecios(false)" /></td>
+                <td style="width:34%"><input id="btnCotizar" type="button" value="COTIZAR" class="btnAction" onclick="javascript:GetPrecios(true)" /></td>
+                <td style="width:33%"><input id="btnPDF" type="button" value="MOSTRAR PDF DE LA COTIZACION" class="btnAction" style="display:none;" onclick="javascript:GetPDF()" /></td>
+            </tr>
+        </table>
+    </center>
+    
+<div id="sendMail" style="display:none;" class="modal">
+    <div class="modal-content" style="width: 50% !important;">
+        <table>
+            <tr>
+                <td class="BOLD">Correo remitente:<span class="Txt_aviso"> *</span></td>
+                <td>@Html.TextBox("txtEnvia", "bwmeill@hotmail.com")</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Correo destinatario:<span class="Txt_aviso"> *</span></td>
+                <td>@Html.TextBox("txtRecibe", @Model.correoElectronico)</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Tema del correo:<span class="Txt_aviso"> *</span></td>
+                <td>@Html.TextBox("txtTitulo", "HSBC-MAPFRE")</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Mensaje:<span class="Txt_aviso"> *</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">@Html.TextArea("txtTexto",new { @rows = 5, @cols = 50 }) </td>
+            </tr>
+            <tr>
+                <td style="width:50%"><input id="btnEnviar" type="button" value="Enviar" class="btnAction" onclick="javascript:SendMail()" /></td>
+                <td style="width:50%"><input id="btnCancelar" type="button" value="Cancelar" class="btnAction" onclick='javascript:dialogMail.dialog("close");' /></td>
+            </tr>
+        </table>
+    </div>
+</div>
+    
+    <script type="text/javascript">
+    function GetPrecios(isFirst)
+    {
+        if (GetValComplemento()) {
+            var data = {};
+            var Complemento = {
+                perfil: jQuery('#prefil').val(),
+                primaInicial: jQuery('#primaInicial').val(),
+                modalidad: jQuery('#modalidad').val(),
+                aportacionesPeriodicas: jQuery('#aportacionesPeriodicas').val(),
+                moneda: jQuery('#moneda').val(),
+                periodicidad: jQuery('#periodicidad').val(),
+                plazo: jQuery('#plazo').val(),
+                formaDePago: jQuery('#formaPago').val()
+            };
+            var Datos = {
+                sexo: "@Model.sexo",
+                idTransaccion: "@Model.idTransaccion",
+                idPromotor: "@Model.idPromotor",
+                fechaDeNacimiento: "11/07/1990",
+                correoElectronico: "@Model.correoElectronico"
+            };
+
+            data.Complemento = Complemento;
+            data.Datos = @Html.Raw(Model.ToJson());//Datos;
+
+            $.post("../api/ConfirmaCotizacion/GetPrecios",
+                data
+                ).done(function (data) {
+                    if (isFirst) {
+                        jQuery('#btnCotizar').hide();
+                        jQuery('#btnRecotizar').show();
+                        jQuery('#btnPDF').show();
+                        jQuery('#tblPrecio').show();
+                        jQuery('td[name=noCotizacion]').show();
+                    }
+
+                    jQuery('#gridPrecios').html(data);
+                });
+            if (isFirst) {
+                $.post("../api/ConfirmaCotizacion/GetIdCotizacion",
+                    data
+                    ).done(function (data) {
+
+                        jQuery("#txtNoCotizacion").val(data);
+
+                    });
+            }
+        }
+    }
+
+    @*function GetPDF()
+    {
+        window.open("@Url.Action("DownloadFile", "DatosCotizacion")?datos=asdf");
+        dialogMail.dialog("open");
+    }*@
+
+    function GetValComplemento()
+    {
+        if (jQuery('#prefil').val() === '' ) {
+            alert('Falta ingresar el dato perfil');
+            return false;
+        }
+        if (jQuery('#primaInicial').val() === '') {
+            alert('Falta ingresar el dato prima inicial');
+            return false;
+        }
+        if (jQuery('#modalidad').val() === '' ) {
+            alert('Falta ingresar el dato modalidad');
+            return false;
+        }
+        if (jQuery('#aportacionesPeriodicas').val() === '' ) {
+            alert('Falta ingresar el dato aportaciones periodicas');
+            return false;
+        }
+        if (jQuery('#moneda').val() === '' ) {
+            alert('Falta ingresar el dato moneda');
+            return false;
+        }
+        if (jQuery('#periodicidad').val() === '' ) {
+            alert('Falta ingresar el dato preriodicidad');
+            return false;
+        }
+        if (jQuery('#plazo').val() === '' ) {
+            alert('Falta ingresar el dato plazo');
+            return false;
+        }
+        if (jQuery('#formaPago').val() === '') {
+            alert('Falta ingresar el dato forma de pago');
+            return false;
+        }
+
+        return true;
+    }
+
+
+    jQuery('td[name=noCotizacion]').hide();
+
+    dialogMail = $( "#sendMail" ).dialog({
+        autoOpen: false,
+        height: window.window.innerWidth,
+        width: window.innerWidth,
+        modal: true
+    });
+
+    @*function SendMail()
+    {
+        $.post("@Url.Action("SendMail", "DatosCotizacion")",
+            {recibe:jQuery("#txtRecibe").val(),
+                envia:jQuery("#txtEnvia").val(),
+                titulo:jQuery("#txtTitulo").val(),
+                texto:jQuery("#txtTexto").val()
+            },
+            function (data){
+                if (data)
+                    alert("Enviado correctamente");          
+            },
+            "json"
+        );
+    }*@
+</script>
+
+
+}

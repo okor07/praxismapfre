@@ -1,0 +1,280 @@
+﻿@model MapfreHSBC.Models.Cotizacion.DatosContratante.Datos
+
+    @{
+        Layout = null;
+        ViewBag.Title = "Detalle";
+    }
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <link rel="stylesheet" href="~/Content/General/estilo.css" />
+        <link rel="stylesheet" href="~/Content/General/question.css" />
+        <link rel="stylesheet" href="~/Content/kendo/styles/kendo.common.min.css" />
+        <link rel="stylesheet" href="~/Content/kendo/styles/kendo.default.min.css" />
+        <link rel="stylesheet" href="~/Content/kendo/styles/kendo.default.mobile.min.css" />
+
+        <script src="~/Content/kendo/js/jquery.min.js"></script>
+        <script src="~/Content/kendo/js/kendo.all.min.js"></script>
+
+    </head>
+    <body style="width:750px!important">
+        @*<b>SEGURO DE VIDA INDIVIDUAL</b>
+        <div style="text-align:right; width: 100% !important;">
+            <img src='~/img/Tabla-Solicita.jpg' width="150" />
+        </div>*@
+
+        <table style="width:100%!important;">
+            <tr>
+                <td align="left" style="text-align:left">
+                    <img src='~/img/Inversion-Retiro.jpg' width="150" />
+                </td>
+
+                <td align="right" style="text-align:right">
+                    <img src='~/img/Tabla-Solicita.jpg' width="150" />
+                </td>
+            </tr>
+        </table>
+
+        <input type="hidden" id="idTransaccion" value="@ViewBag.idTransaccion" />
+        <input type="hidden" id="idPromotor" value="@ViewBag.idPromotor" />
+        <input type="hidden" id="idCotizacionMapfre" value="@ViewBag.idCotizacionMapfre" />
+        <input type="hidden" id="numeroPoliza" value="@ViewBag.numeroPoliza" />
+        <input type="hidden" id="numeroReferencia" value="@ViewBag.numeroReferencia" />
+        <input type="hidden" id="monto" value="@ViewBag.monto" />
+        <input type="hidden" id="descCargo" value="@ViewBag.descCargo" />
+        
+        <div class="bordeDetalle" style="width: 100% !important; vertical-align: central;  height:37px">
+            Datos del contratante y/o Asegurado
+        </div>
+
+        <table cellpadding="5">
+            <tr>
+                <td width="25%">
+                    <b>Tipo de Persona:</b>
+                </td>
+                <td>@Html.Label(Model != null ? Model.msgJson.tipoDePersona : "")</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Nombre:</b>
+                </td>
+                <td>@Html.Label(Model != null ? Model.msgJson.nombreDeContratante : "")</td>
+            @*</tr>*@
+            <tr>
+                <td width="25%">
+                        <b>Apellido Paterno:</b>
+                </td>
+                    <td>@Html.Label(Model != null ? Model.msgJson.apellidoPaternoContrante : "")</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                        <b>Apellido Materno:</b>
+                </td>
+                    <td>@Html.Label((string)@ViewBag.apMaterno)</td>
+            </tr>
+        </table>
+
+        <div class="Titulos" style="width:100%!important;">Caracteristicas del producto</div>
+
+        <table cellpadding="5">
+            <tr>
+                <td width="25%">
+                    <b>Perfil:</b>
+                    <b>
+                </td>
+                <td>@Html.Label((string)@ViewBag.perfil)</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Modalidad:</b>
+                </td>
+                <td>@Html.Label((string)@ViewBag.modalidad)</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Moneda:</b>
+                </td>
+                <td>@Html.Label((string)@ViewBag.moneda)</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Plazo:</b>
+                </td>
+                <td>@Html.Label((string)@ViewBag.plazo)</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Coberturas:</b>
+                </td>
+                <td>@Html.Label((string)@ViewBag.coberturas)</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Prima Inicial:</b>
+                </td>
+                <td>@ViewBag.primaInicial</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Aportaciones periódicas:</b>
+                </td>
+                <td>@ViewBag.aportacionesPeriodicas</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Periodicidad:</b>
+                </td>
+                <td>@Html.Label((string)@ViewBag.periodicidad)</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Forma de Pago:</b>
+                </td>
+                    <td>@Html.Label((string)@ViewBag.formaPago)</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>@ViewBag.nomFondo1:</b>
+                </td>
+                    <td>@ViewBag.fondoUno</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>@ViewBag.nomFondo2:</b>
+                </td>
+                    <td>@ViewBag.fondoDos</td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>@ViewBag.nomFondo3:</b>
+                </td>
+                    <td>@ViewBag.fondoTres</td>
+            </tr>
+            <tr style="display:none">
+                <td width="25%">
+                    <b>Precio del Seguro:</b>
+                </td>
+                <td>@ViewBag.precioSeguro</td>
+            </tr>
+            <tr style="display:none">
+                <td width="25%">
+                    <b>Derecho de póliza:</b>
+                </td>
+                <td>@ViewBag.derechoPoliza</td>
+            </tr>
+            <tr style ="display:none">
+                <td width="25%">
+                    <b>Prima total:</b>
+                </td>
+                <td>@ViewBag.primaTotal</td>
+            </tr>
+            <tr></tr>
+            </table>
+
+        <div class="bordeInferior" style="width: 100% !important; height: 25px">  </div>
+
+
+
+            @*<div class="Titulos" style="width: 100% !important; height:15px; border-bottom-right-radius: 10px"></div>*@
+            <br />
+
+        <table>
+            <tr>
+                <td style="width:34%"></td>
+                <td style="width:34%">
+                        <input id="btnContinuar" type=image src="~/img/Continuar.jpg" width="101px" height="43px">
+                        <input id="btnImprimir" type=image src="~/img/Imprimir.jpg" style="display:none" width="95px" height="43px">
+                    @*<a id="btnImprimir" href="/impresion/impresiones?idPoliza=@ViewBag.numeroPoliza" style="display:none"><img src="~/img/Imprimir.jpg" /></a>*@ 
+                </td>
+            </tr>
+           
+
+        </table>
+        <div id="loadingWindow" style="display:none">
+            Procesando cobro <img src='~/Content/images/ajaxloadingbar.gif' />
+        </div>
+        <div id="paramWS4"></div>
+        <div id="respWS4"></div>
+        <script>
+            $(document).ready(function () {
+
+                $("#btnImprimir").click(function (e) {
+                    var loc = window.location;
+                    var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/'));
+                    var ruta = pathName.substring(0, pathName.lastIndexOf('/'));
+                    var url = ruta + "/impresion/impresiones?idPoliza=" + @ViewBag.numeroPoliza;
+                    //alert(url);
+                    $(window).attr('location', url);
+                });
+
+                var loadingWindow = $("#loadingWindow").kendoWindow({
+                    title: "Cargando",
+                    draggable: false,
+                    width: 250,
+                    height: 100,
+                    resizable: false,
+                    visible: false,
+                    modal: true
+                }).data("kendoWindow");
+
+                $(document).ajaxStart(function () {
+                    loadingWindow.center();
+                    loadingWindow.open();
+                });
+
+                $(document).ajaxStop(function () {
+                    loadingWindow.close();
+                });
+
+                jQuery('#btnContinuar').click(function () {
+                    $(this).attr('disabled', 'true');
+                    var msgJsonTest = {
+                        idTransaccion: parseInt($("#idTransaccion").val()),
+                        idPromotor: $("#idPromotor").val(),
+                        idCotizacionMapfre: $("#idCotizacionMapfre").val(),
+                        numeroPoliza: parseInt($("#numeroPoliza").val()),
+                        numeroReferencia: $("#numeroReferencia").val(),
+                        monto: parseFloat($("#monto").val()),
+                        descCargo: $("#descCargo").val()                            
+                    }
+                    var datos = {
+                        msgJson: msgJsonTest
+                    }
+
+                    $.ajax({
+                        type: "Post",
+                        url: '../api/rest/services/invokeWs4',
+                        async: false,
+                        data: JSON.stringify(msgJsonTest),
+                        contentType: "application/json",
+                        success: function (data) {
+                            var codError = data.split('=')[1];
+                            var mensaje = data.split('=')[0];
+
+                            if (codError == "0") {
+                                $("#btnImprimir").show();
+                                $("#btnContinuar").hide();
+                                $(this).removeAttr('disabled');
+                            }
+                            alert(mensaje);
+                        },
+                        error: function (xhr) {
+                            var codError = data.split('=')[1];
+                            var mensaje = data.split('=')[0];
+
+                            alert(mensaje);
+                            $("#btnImprimir").hide();
+                            $("#btnContinuar").show();
+                            $(this).removeAttr('disabled');
+                        }
+                    });
+                    $(this).removeAttr('disabled');
+                });
+            })
+
+        </script>
+    </body>
+</html>

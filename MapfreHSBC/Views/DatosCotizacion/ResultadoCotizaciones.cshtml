@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Resultado de Consulta de Cotizaciones";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+@using (Html.BeginForm("ResultadoCotizaciones", "DatosCotizacion", FormMethod.Post,
+                                      new { enctype = "multipart/form-data" }))
+{
+
+<br />
+<br />
+<br />
+    <center>
+        <div style="border: 2px solid #636063; width:95%">
+
+            @{
+    WebGrid gridCob = new WebGrid(source: ViewBag.DSConsulta,
+                                  rowsPerPage: 10,
+                                  canPage: true);
+            }
+
+            @gridCob.GetHtml(htmlAttributes: new { id = "gdvConsulta" },
+                                     columns: ViewBag.GVConsulta,
+                                         tableStyle: "wgTableConsult",
+                                         alternatingRowStyle: "wgRowAlterConsult",
+                                         selectedRowStyle: "wgRowSelectedConsult",
+                                         rowStyle: "wgRowConsult")
+        </div>
+    </center>
+
+}
+<script type="text/javascript">
+    function Reload(link)
+    {
+        window.open("@Url.Action("CompletarCotizacion", "DatosCotizacion")?idCotizacion=" + link);
+    }
+</script>

@@ -1,0 +1,158 @@
+﻿@model MapfreHSBC.Models.Cotizacion.DatoCotizacion.Datos
+
+@{
+    Layout = "~/Views/Shared/_Master.cshtml";
+    ViewBag.Title = "Cotizacion";
+}
+
+<h2>Cotizacion</h2>
+
+<div>
+    <table width="70%" align="center">
+        <tr>
+            <td>Id Transacción</td>
+            <td>
+                @Html.TextBoxFor(model => model.msgJson.idTransaccion)
+            </td>
+        </tr>
+        <tr>
+            <td>Id Promotor</td>
+            <td>
+                @Html.TextBoxFor(model => model.msgJson.idPromotor)
+            </td>
+        </tr>
+        <tr>
+            <td>Fecha de Nacimiento</td>
+            <td>
+                @Html.TextBoxFor(model => model.msgJson.fechaDeNacimiento)
+            </td>
+        </tr>
+        <tr>
+            <td>Sexo</td>
+            <td>
+                @Html.DropDownListFor(model => model.msgJson.sexo, new SelectList(ViewBag.Sexo, "Value", "Text"))
+            </td>
+        </tr>
+        <tr>
+            <td>Correo</td>
+            <td>
+                @Html.TextBoxFor(model => model.msgJson.correoElectronico)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input id="btnCotizar" type="submit" value="Cotizar" /></td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <input id="btnWS2" type="button" value="Params WS2" />
+    <div id="paramWS2"></div>
+    <div id="respWS2"></div>
+    <br />
+    <input id="btnWS4" type="button" value="Params WS4" />
+    <div id="paramWS4"></div>
+    <div id="respWS4"></div>
+    <br />
+    <input id="btnWS6" type="button" value="Params WS6" />
+    <div id="paramWS6"></div>
+    <div id="respWS6"></div>
+<div id="resp">
+
+</div>
+
+
+<script src="/Scripts/jquery-1.10.2.js"></script>
+<script src="/Scripts/bootstrap.js"></script>
+<script src="/Scripts/respond.js"></script>
+<script type="text/javascript">
+    jQuery('#btnCotizar').click(function () {
+        var model = {};
+
+        model.idTransaccion = jQuery('#@Html.IdFor(model => model.msgJson.idTransaccion)').val();
+        model.idPromotor = jQuery('#@Html.IdFor(model => model.msgJson.idPromotor)').val();
+        model.fechaDeNacimiento = jQuery('#@Html.IdFor(model => model.msgJson.fechaDeNacimiento)').val();
+        model.sexo = jQuery('#@Html.IdFor(model => model.msgJson.sexo)').val();
+        model.correoElectronico = jQuery('#@Html.IdFor(model => model.msgJson.correoElectronico)').val();
+
+        $.post("../../api/Cotizacion/WS1",
+                model,
+                "json"
+        ).done(function(data){
+
+            jQuery('#resp').html('<a href="' + data.url + '">' + data.url +' </a>');})
+    });
+
+    jQuery('#btnWS2').click(function () {
+        var msgJsonTest = {
+            idTransaccion: jQuery('#@Html.IdFor(model => model.msgJson.idTransaccion)').val(),
+            idPromotor: jQuery('#@Html.IdFor(model => model.msgJson.idPromotor)').val(),
+            idConfirmacion: "1234323",
+            descripcionErrorC: "no existe",
+            idCotizacionMapfre: "333333",
+            email: jQuery('#@Html.IdFor(model => model.msgJson.correoElectronico)').val(),
+            codigoError: 0,
+            descripcionError: ""
+        }
+        var datos = {
+            msgJson : msgJsonTest
+        }
+
+        jQuery('#paramWS2').html(JSON.stringify(datos));
+
+        $.post("http://mxef5dvit01ch.mx.hsbc/UnitLinkedWS/mapfreRest/unitLinked/confirmQuotation",
+               datos,
+               "json").done(function (data) {
+                   jQuery('#respWS2').text(JSON.stringify(datos));
+        });
+    });
+
+    jQuery('#btnWS4').click(function () {
+        var msgJsonTest = {
+            idTransaccion: jQuery('#@Html.IdFor(model => model.msgJson.idTransaccion)').val(),
+            idPromotor: jQuery('#@Html.IdFor(model => model.msgJson.idPromotor)').val(),
+            idCotizacionMapfre: "12345",
+            numeroPoliza: "12345",
+            numeroReferencia: "10117000000010",
+            monto: 1000.02,
+            descCargo: "Seg Unit Link  10117000000010"
+
+        }
+        var datos = {
+            msgJson: msgJsonTest
+        }
+        jQuery('#paramWS4').html(JSON.stringify(datos));
+        $.post("http://mxef5dvit01ch.mx.hsbc/UnitLinkedWS/mapfreRest/unitLinked/cargoAbono",
+            datos,
+            "json").done(function (data) {
+                jQuery('#respWS4').html(JSON.stringify(data));
+            });
+    });
+
+    jQuery('#btnWS6').click(function () {
+        var msgJsonTest = {
+            idTransaccion: jQuery('#@Html.IdFor(model => model.msgJson.idTransaccion)').val(),
+            idPromotor: jQuery('#@Html.IdFor(model => model.msgJson.idPromotor)').val(),
+            idCotizacionMapfre: "1234567890123",
+            numeroPoliza: 123,
+            inicioVigencia: "23/12/2016",
+            finVigencia: "23/12/2021",
+            primaInicial: 15000,
+            primaAdicionales: 1000,
+            frecuenciaAportaciones: "Semestral,",
+            plan: "Jubilación"
+        }
+        var datos = {
+            msgJson: msgJsonTest
+        }
+        jQuery('#paramWS6').html(JSON.stringify(datos));
+        $.post("http://mxef5dvit01ch.mx.hsbc/UnitLinkedWS/mapfreRest/unitLinked/registroPoliza",
+            datos,
+            "json").done(function (data) {
+                jQuery('#respWS6').html(JSON.stringify(data));
+            });
+    });
+
+
+
+</script>

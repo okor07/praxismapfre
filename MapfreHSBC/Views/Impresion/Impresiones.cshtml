@@ -1,0 +1,356 @@
+﻿@model MapfreHSBC.Models.Cotizacion.ImpresionPoliza
+
+@{
+    Layout = null;
+    ViewBag.Title = "Impresiones";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="~/Content/General/estilo.css" />
+    <link rel="stylesheet" href="~/Content/General/question.css" />
+    <link rel="stylesheet" href="~/Content/kendo/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/styles/kendo.default.mobile.min.css" />
+
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+    <script src="~/Scripts/General.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+
+    <script src="~/Content/kendo/js/jquery.min.js"></script>
+    <script src="~/Content/kendo/js/kendo.all.min.js"></script>
+</head>
+<body style="width:750px!important">
+
+    @*<div style="text-align:right; width: 100% !important;">
+            <img src='~/img/Tabla-Estas-Segurado.jpg' width="150" />
+        </div>*@
+
+    <table style="width:100%!important;">
+        <tr>
+            <td align="left" style="text-align:left">
+                <img src='~/img/Inversion-Retiro.jpg' width="150" />
+            </td>
+
+            <td align="right" style="text-align:right">
+                <img src='~/img/Tabla-Estas-Segurado.jpg' width="150" />
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        <table>
+            <tr>
+                <td style="width:45%"></td>
+                <td style="width: 10%; background-color:#EEECEC" align="center">
+                    <br />
+                </td>
+                <td style="width:45%"></td>
+            </tr>
+            <tr>
+                <td style="width:33%"></td>
+                <td style="width:33%">
+                    Se genero la póliza: @ViewBag.Poliza
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <br />
+    <span id="staticNotification"></span>
+    <div id="appendto" class="demo-section k-content"></div>
+    @*<div class="Titulos" style="width: 100% !important; border-top-right-radius: 10px">Seleccione un documento</div>*@
+    <div class="borde" style="width: 100% !important; height: 25px;">
+        <img src='~/img/pleca_header_hand_pre.png' style="text-align:left;position:absolute;top:128px; left:0px" height="24px" />
+        Seleccione un documento
+    </div>
+
+    @*<center>
+            <table>
+                <tr>
+                    <td width="33%"></td>
+                    <td width="33%">
+                        @*<input id="documentos" style="width: 100%;" />
+                    </td>
+                    <td width="33%"></td>
+                </tr>
+            </table>
+        </center>*@
+
+    <br />
+    <br />
+    <br />
+
+    <div @*style="display:none"*@ id="ListChkBox">
+
+        <center>
+            <table>
+                <tr>
+                    <td style="width:15%"></td>
+                    <td style="width:50%">
+                        <b>
+                            <input type="checkbox" id="chkTodos" name="chkTodos" value="ALL">
+                            <label>Seleccionar Todos</label>
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:15%"></td>
+                    <td style="width:50%" id="tdOpciones">
+                        @foreach (var docs in ViewBag.DocumentsList)
+                        {
+                            <input type="checkbox" name="@docs.id" value="@docs.value">
+                            <label>@docs.text</label>
+
+                            <br />
+                        }
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </div>
+
+    <br />
+    <br />
+    <div class="bordeInferior" style="width: 100% !important; height: 25px">  </div>
+
+    <table style="width:100%">
+
+        <tr>
+            <td>
+                <input id="btnImprimir" type=image src="~/img/Imprimir.jpg" width="95px" height="43px">
+            </td>
+            <td>
+                <input id="btnEnviarCorreo" type=image src="~/img/Enviar-por-Correo-Electronico.jpg" width="194px" height="43px">
+            </td>
+
+        </tr>
+
+    </table>
+
+    <div id="sendMail" style="display:none;">
+
+        <span id="staticNotification1"></span>
+        <div id="appendto1" class="demo-section k-content"></div>
+
+        <div id="prueba" style="width: 40% !important;">
+            <center>
+                <table style="width:80%!important">
+                    <tr>
+                        <td class="BOLD">Correo remitente:<span class="Txt_aviso"> *</span></td>
+                        <td><input type="text" id="txtEnvia" value="@ViewBag.emailEnvia" disabled="disabled" style="width: 100%;" /></td>
+                    </tr>
+                    <tr>
+                        <td class="BOLD">Correo destinatario:<span class="Txt_aviso"> *</span></td>
+                        <td><input type="text" id="txtRecibe" value="@ViewBag.emailRecibe" style="width: 100%;" /></td>
+                    </tr>
+                    <tr>
+                        <td class="BOLD">Tema del correo:<span class="Txt_aviso"> *</span></td>
+                        <td><input type="text" id="txtTitulo" value="HSBC-MAPFRE COTIZACIÓN INVERSIÓN RETIRO" style="width: 100%;" /></td>
+                    </tr>
+                    <tr>
+                        <td class="BOLD">Mensaje:<span class="Txt_aviso"> *</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">@Html.TextArea("txtTexto", (string)@ViewBag.textCorreo, new { @rows = 10, @cols = 60, @disabled = "disabled" }) </td>
+                    </tr>
+                    <tr>
+                        @*<td style="width:50%"><input id="btnEnviar" type="button" value="Enviar" class="btnAction" onclick="javascript:SendMail()" /></td>
+                            <td style="width:50%"><input id="btnCancelar" type="button" value="Cancelar" class="btnAction"/></td>*@
+                        <td style="width:50%; align-content:center"><input id="btnEnviar" type=image src="~/img/Enviar-por-Correo-Electronico.jpg" width="194px" height="43px"></td>
+                        @*<td style="width:50%; align-content:center"><input id="btnCancelar" type="button" value="Cancelar" class="btnAction" /></td>*@
+                        <td style="width:50%; align-content:center"><input id="btnCancelar" type=image src="~/img/Regresar.jpg" width="101px" height="43px"></td>
+
+                    </tr>
+                </table>
+            </center>
+        </div>
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            var staticNotification1 = $("#staticNotification1").kendoNotification({
+                appendTo: "#appendto1"
+            }).data("kendoNotification");
+
+            var dialog = $("#sendMail").kendoWindow({
+                title: "Enviar Correo",
+                visible: false,
+                modal: true
+            }).data("kendoWindow");
+
+            $("#btnEnviarCorreo").click(function (e) {
+                dialog.center();
+                dialog.open();
+            });
+
+            $("#btnCancelar").click(function (e) {
+                dialog.close();
+            });
+
+            $("#btnEnviar").click(function (e) {
+                staticNotification1.hide();
+                $("#loadingBar").show();
+                if ($("#txtRecibe").val() == null || $("#txtRecibe").val() == "") {
+                    staticNotification1.show("Falta Ingresar Destinatario");
+                    $("#loadingBar").hide();
+                    loadingWindow.close();
+                    return;
+                } else if (!validateEmail($('#txtRecibe').val())) {
+                    staticNotification1.show("Debes ingresar un correo electronico valido");
+                    $("#loadingBar").hide();
+                    loadingWindow.close();
+                    return;
+                }
+                else if (txtTexto.value == null || txtTexto.value == "") {
+                    staticNotification1.show("Falta Ingresar un Mensaje");
+                    $("#loadingBar").hide();
+                    loadingWindow.close();
+                    return;
+                }
+                else {
+                    dialog.close();
+                    //  loadingWindow.close();
+                }
+
+                var document = "";
+
+                $('#tdOpciones input[type=checkbox]').each(function () {
+                    if (this.checked) {
+                        document = this.name;
+                    }
+                });
+
+                if (document == "" || $("#chkTodos").prop("checked")) {
+                    document = "XX";
+                }
+
+                var json = {
+                    "noPoliza": '@ViewBag.Poliza',
+                    "value": document,
+                    "remitente": $("#txtEnvia").val(),
+                    "destinatario": $("#txtRecibe").val(),
+                    "asunto": $("#txtTitulo").val(),
+                    "mensaje": $("#txtTexto").val()
+                };
+                $.ajax({
+                    type: "Post",
+                    url: '../api/rest/services/mail',
+                    async: false,
+                    data: JSON.stringify(json),
+                    contentType: "application/json",
+                    beforeSend: function (data) {
+                    },
+                    success: function (data) {
+                        //console.log("Enviar correo data ", data);
+                        alert(data);
+                        $("#loadingBar").hide();
+                        loadingWindow.close();
+                    },
+                    error: function (xhr) {
+                        alert("Error al enviar correo");
+                        $("#loadingBar").hide();
+                        loadingWindow.close();
+                    }
+                });
+
+                txtTexto.value = "";
+                txtRecibe.value = "";
+
+            });
+
+            $("#documentos").kendoComboBox({
+                dataTextField: "etiqueta",
+                dataValueField: "valor",
+                placeholder: "-- Selecciona un Documento --",
+                filter: "startswith",
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: "../api/rest/services/documentos",
+                        }
+                    }
+                },
+            });
+
+            $("#btnImprimir").click(function (e) {
+                var checkArray = new Array();
+
+                if ($("#chkTodos").prop("checked"))
+                    imprimirTodo();
+                else
+                    $('#tdOpciones input[type=checkbox]').each(function () {
+                        if (this.checked) {
+                            //alert('impresion');
+                            imprimir(this.name)
+                        }
+                        //this.checked ? checkArray.push(imprimir(this.name)) : checkArray.push("0");
+                    });
+            });
+
+            $("#tdOpciones input[type=checkbox]").change(function () {
+                var isCheck = true;
+                $('#tdOpciones input[type=checkbox]').each(function () {
+                    if (!this.checked)
+                        isCheck = false;
+                });
+
+                $("#chkTodos").prop("checked", isCheck);
+            });
+
+            $("#chkTodos").change(function () {
+                var isCheck = this.checked
+                $('#tdOpciones input[type=checkbox]').each(function () {
+                    $(this).prop("checked", isCheck);
+                });
+            });
+        });
+
+        function imprimir(idDocument) {
+            // alert('prueba' + idDocument);
+            var noPoliza = '@ViewBag.Poliza';
+            if (idDocument == "P" || idDocument == "ST" || idDocument == "CRS" || idDocument == "CF" || idDocument == "PPR" || idDocument == "CP"||idDocument=="FI") {
+                window.open("@Url.Action("Impresion", "Impresion")?noPoliza=" + noPoliza + "&idDocument=" + idDocument);
+            } else {
+
+                var loc = window.location;
+                var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/'));
+                var ruta = pathName.substring(0, pathName.lastIndexOf('/'));
+                var url = ruta
+                //alert('url: ' + url + ' ruta: ' + ruta + ' pathName: ' + pathName + ' loc: ' + loc);
+                window.open(url + '/Documents/' + idDocument + '.pdf');
+            }
+            //alert('prueba' + idDocument);
+            //window.open('/Documents/' + idDocument + '.pdf');
+        };
+
+        function imprimirTodo() {
+            var noPoliza = '@ViewBag.Poliza';
+            var doctos = "";
+
+            $('#tdOpciones input[type=checkbox]').each(function () {
+                doctos += this.name + '|';
+            });
+
+            window.open("@Url.Action("ImpresionAll", "Impresion")?noPoliza=" + noPoliza + "&idDocument=" + doctos + "&allDoctos=true");
+        }
+
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+
+    </script>
+
+
+</body>
+</html>

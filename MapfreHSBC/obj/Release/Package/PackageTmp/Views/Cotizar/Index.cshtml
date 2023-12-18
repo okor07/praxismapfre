@@ -1,0 +1,1454 @@
+﻿@model MapfreHSBC.Models.Cotizacion.DatoCotizacion.Datos
+
+@{
+    Layout = null;
+    ViewBag.Title = "Cotización";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="~/Content/General/estilo.css" />
+    <link rel="stylesheet" href="~/Content/General/question.css" />
+    <link rel="stylesheet" href="~/Content/kendo/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/styles/kendo.default.mobile.min.css" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/kendo/js/kendo.all.min.js"></script>
+
+</head>
+<body style="width: 750px !important">
+
+    @*<div style="width: 100% !important;">
+        <img src='~/img/Inversion-Retiro.jpg' width="150" style="text-align:left" />
+        <img src='~/img/Tabla-Cotiza.jpg' width="150" style="text-align:right" />
+    </div>*@
+
+    <table style="width:100%!important;">
+        <tr>
+            <td align="left" style="text-align:left">
+                <img src='~/img/Inversion-Retiro.jpg' width="150" />
+            </td>
+            
+            <td align="right" style="text-align:right">
+                <img src='~/img/Tabla-Cotiza.jpg' width="150" />
+            </td>
+        </tr>
+    </table>
+
+    <input type="hidden" id="idPromotor" value="@ViewBag.idPromotor" />
+    <input type="hidden" id="idTransaccion" value="@ViewBag.idTransaccion" />
+    <input type="hidden" id="pctDistribucionHidden" value="0" />
+    <input type="hidden" id="idInversionHidden" value="0" />
+
+    <input type="hidden" id="pctDistribucion1Hidden" value="@ViewBag.pctDist1" />
+    <input type="hidden" id="pctDistribucion2Hidden" value="@ViewBag.pctDist2" />
+    <input type="hidden" id="pctDistribucion3Hidden" value="@ViewBag.pctDist3" />
+    <input type="hidden" id="iniciaCotizacion" value="0" />
+    
+    <input type="hidden" id="validaEdad" value="0" />
+
+
+    @*<div class="borde" style="width: 100% !important; vertical-align: central; height: 25px  ">
+        <img src='~/img/pleca_header_hand_pre.png' style="text-align:left;position:absolute;top:76px; left:0px" height="24px" />
+        Datos del Prospecto
+    </div>*@
+
+    <div class="borde" style="width: 100% !important; vertical-align: central; height: 25px;">
+        <img src='~/img/pleca_header_hand_pre.png' style="text-align:left;position:absolute;top:76px; left:0px" height="24px" />
+        Datos del Prospecto
+    </div>
+
+        <table style="width:100%!important;">
+            <tr>
+                <td width="25%">
+                    <label for="fechaCotiza" class="col-md-2 control-label"><b>Fecha de cotización</b></label>
+                </td>
+                <td width="25%">
+                    <input id="fechaCotiza" disabled="disabled" style="width: 100%;" value="@ViewBag.fechaDeCotizacion" />
+                </td>
+                <td width="25%">
+                    <label id="labelNumCotizacion" for="numCotizacion" style="display:none;" class="col-md-2 control-label"><b>Número de Cotización</b></label>
+                </td>
+                <td width="25%">
+                    <input type="text" id="numCotizacion" style="display:none;width: 100%;" name="numCotizacion"
+                           disabled="disabled"
+                           value="@ViewBag.idCotizacionMapfre"
+                           class="form-control" placeholder="Número de Cotización" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="fechaNac" class="col-md-2 control-label"><b>Fecha de nacimiento</b></label>
+                </td>
+                <td>
+                    <input id="fechaNac" style="width: 100%;" disabled="disabled" value="@ViewBag.fechaDeNacimiento" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="sexo" class="col-md-2 control-label"><b>Sexo</b></label>
+                </td>
+                <td>
+                    <input type="text" style="width: 100%;" id="sexo" disabled="disabled" value="@ViewBag.sexo" name="sexo" class="form-control" placeholder="Sexo" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email" class="col-md-2 control-label"><b>Correo electrónico</b></label>
+                </td>
+                <td>
+                    <input type="text" style="width: 100%;" id="email" name="email" value="@ViewBag.correoElectronico" class="form-control" placeholder="Correo electrónico" />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div class="Titulos" style="width:100%!important;">Datos de la Cotización</div>
+        <div id="appendtoModalidades"></div>
+        <table style="width:100%!important;">
+            <tr>
+                <td width="25%">
+                    <label for="modalidades" class="col-md-2 control-label"><b>Modalidad</b></label>
+                </td>
+                <td width="25%">
+                    <input id="modalidades" style="width: 100%;" value="@ViewBag.modalidad" />
+                </td>
+                <td width="25%">
+                    <label for="primaInicial" class="col-md-2 control-label"><b>Prima Inicial</b></label>
+                </td>
+                <td width="25%">
+                    <input type="text" style="width: 100%;" id="primaInicialSt" value="@ViewBag.primaInicialSt"
+                           onkeydown="return onlyNumbers(event)"
+                           name="primaInicialSt" class="form-control" placeholder="Prima Inicial" onblur="actualiza()" />
+                    <input style="display:none" type="number" id="primaInicial" value="@ViewBag.primaInicial">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="perfiles" class="col-md-2 control-label"><b>Perfil</b></label>
+                </td>
+                <td>
+                    <input id="perfiles" style="width: 100%;" value="@ViewBag.perfil" />
+                </td>
+                <td>
+                    <label for="aportaciones" class="col-md-2 control-label"><b>Aportaciones periodicas</b></label>
+                </td>
+                <td>
+                    <input type="text" style="width: 100%;" id="aportacionesSt"
+                           onkeydown="return onlyNumbers(event)"
+                           value="@ViewBag.aportacionesSt"
+                           name="aportacionesSt" class="form-control" placeholder="Aportaciones periódicas" />
+                    <input style="display:none" type="number" id="aportaciones" value="@ViewBag.aportaciones">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="monedas" class="col-md-2 control-label"><b>Moneda</b></label>
+                </td>
+                <td>
+                    <input id="monedas" style="width: 100%;" value="@ViewBag.moneda" />
+                </td>
+                <td>
+                    <label for="periodicidad" class="col-md-2 control-label"><b>Periodicidad</b></label>
+                </td>
+                <td>
+                    <input type="text" id="periodicidad" value="@ViewBag.periodicidad"
+                           style="width: 100%!important;" name="aportaciones" class="form-control" placeholder="Periodicidad" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="plazo" class="col-md-2 control-label"><b>Plazo</b></label>
+                </td>
+                <td>
+                    <input id="plazo" style="width: 100%;" value="@ViewBag.plazo" />
+                </td>
+                <td>
+                    <label for="diaCobro" class="col-md-2 control-label"><b>Día de cobro de la aportación periódica</b></label>
+
+                </td>
+                <td>
+                    <input id="diaCobro" style="width: 100%;" value="@ViewBag.diaCobro" />
+                </td>
+            </tr>
+            <tr style="display:none;">
+                <td></td>
+                <td></td>
+                <td>
+                    <label for="formaPago" class="col-md-2 control-label"><b>Forma de pago</b></label>
+
+                </td>
+                <td style="display:none;">
+                    <input id="formaPago" style="width: 100%;" />
+
+                </td>
+            </tr>
+        </table>
+        <br />
+
+        <div class="TitCotiza11BlaBold" style="width:100%!important;display:none">Procedencia de los recursos</div>
+        <table style="width:100%!important;display:none">
+            <tr>
+                <td width="50%">
+                    <label for="recursosPrima" class="col-md-2 control-label">
+                        <b>1.-¿Cúal es el origen de los recursos para el pago de la prima inicial?</b>
+                    </label>
+                </td>
+                <td width="50%">
+                    <input id="recursosPrima" style="width: 100%;" />
+                </td>
+            </tr>
+            <tr id="tr1" style="display:none">
+                <td>
+                    <label for="especificarPrima" class="col-md-2 control-label">
+                        Favor de especificar:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="especificarPrima" name="especificarPrima" value="" class="form-control"
+                           style="width: 100%;" placeholder="Especifique" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="recursosAportaciones" class="col-md-2 control-label">
+                        <b>2.-¿Cúal es el origen de los recursos para el pago de las aportaciones periódicas?</b>
+                    </label>
+                </td>
+                <td>
+                    <input id="recursosAportaciones" style="width: 100%;" />
+                </td>
+            </tr>
+            <tr id="tr2" style="display:none">
+                <td>
+                    <label for="especificarAportaciones" class="col-md-2 control-label">
+                        Favor de especificar:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="especificarAportaciones" name="especificarAportaciones" value="" class="form-control"
+                           style="width: 100%;" placeholder="Especifique" />
+                </td>
+            </tr>
+        </table>
+        <div id="appendto"></div>
+        <div id="divCalculoMonto" style="display:none;width:100%!important;">
+            <table>
+                <tr>
+                    <td width="50%">
+                        <div class="Titulos" style="width:100%!important;">Monto a invertir</div>
+                        <div id="gridCalculoMonto"></div>
+                        <i>Nota: Las deducciones corresponden al derecho de póliza más la suma de los costos por cobertura, fondo especial, fondo de ahorro y primas</i>
+
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="Titulos" style="width:100%!important;">Coberturas</div>
+                        <div id="gridCoberturas"></div>
+                        <i>Nota: La cobertura aplica sobre el total del monto invertido en los fondos al momento del siniestro.</i>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <br />
+        <div id="divFondos" style="display:none;width:100%!important;">
+            <div class="Titulos" style="width:100%!important;">Datos de la Cotización</div>
+            <div id="gridFondos"></div>
+        </div>
+
+        <br />
+        <div id="divCotizar" style="display:none;width:100%!important;">
+            <table>
+                <tr>
+                    <td>
+                        <div class="Titulos" style="width:100%!important;">Precio del Seguro</div>
+                        <div id="gridCalculoPrecio"></div>
+                    </td>
+                    <td>
+                        <div class="Titulos" style="width:100%!important;">Coberturas</div>
+                        <div id="gridCoberturas"></div>
+                        <i>Nota: La cobertura aplica sobre el total del monto invertido en los fondos al momento del siniestro.</i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <br />
+    <br />
+
+    <div class="bordeInferior" style="width: 100% !important; height: 40px">  </div>
+    <br />
+
+        <center>
+            <table>
+                <tr>
+                    <td style="width:33%">
+                        @*<input id="btnPDF" type="button" value="Mostrar PDF" class="btnAction" style="display:none;" />*@
+                        @*<input id="btnPDF" type=image src="~/img/ver-cotizacion.jpg" style="display:none;" width="119" height="43">*@
+                        <input id="btnPDF" type="button" style="background-image: url(~/../../img/ver-cotizacion.jpg); background-color: #FFFFFF; background-repeat: no-repeat; height: 43px; border: none; display: none; cursor: pointer" />
+
+                    </td>
+                    <td style="width:33%">
+                        @*<input id="btnCotizar" type="button" value="Cotizar" class="btnAction" />*@
+                        @*<input id="btnCotizar" type="image" src="~/img/cotiza.jpg" alt="Da clic para Cotizar" width="87" height="43">*@
+                        <input id="btnCotizar" type="button" style="background-image: url(~/../../img/cotiza.jpg); background-color: #FFFFFF; background-repeat: no-repeat; height: 43px; border: none; cursor: pointer" />
+                    </td>
+                    <td style="width:34%">
+                        @*<input id="btnContinuar" type="button" value="Continuar" class="btnAction"
+                            style="display:none;" />*@
+                        @*<input id="btnContinuar" type=image src="~/img/Continuar.jpg" style="display:none;" >*@
+                        <input id="btnContinuar" type="button" style="background-image: url(~/../../img/Continuar.jpg); background-color: #FFFFFF; background-repeat: no-repeat; height: 43px; width: 101px; border: none; display: none; cursor: pointer" />
+                    </td>
+                </tr>
+            </table>
+            <div id="paramWS2"></div>
+            <div id="respWS2"></div>
+        </center>
+
+
+
+        <span id="popupNotification"></span>
+
+        <!-- Modal Actualizar-->
+        <div id="sendMail" style="position: relative;">
+
+            <span id="staticNotification1"></span>
+            <div id="appendto1" class="demo-section k-content"></div>
+
+            <div id='loadingBar' style="display:none" align="center">Enviando correo <img src='~/Content/images/ajaxloadingbar.gif' /> </div>
+
+            <div id="contenedorMail">
+                <center>
+                    <table style="width:100%!important">
+                        <tr>
+                            <td class="BOLD">Correo remitente:<span class="Txt_aviso"> *</span></td>
+                            <td><input type="text" id="txtEnvia" value="@ViewBag.emailEnvia" disabled="disabled" style="width: 100%;" /></td>
+                        </tr>
+                        <tr>
+                            <td class="BOLD">Correo destinatario:<span class="Txt_aviso"> *</span></td>
+                            <td><input type="text" id="txtRecibe" value="@ViewBag.correoElectronico" style="width: 100%;" /></td>
+                        </tr>
+                        <tr>
+                            <td class="BOLD">Tema del correo:<span class="Txt_aviso"> *</span></td>
+                            <td><input type="text" id="txtTitulo" value="HSBC-MAPFRE COTIZACIÓN INVERSION RETIRO" style="width: 100%;" /></td>
+                        </tr>
+                        <tr>
+                            <td class="BOLD">Mensaje:<span class="Txt_aviso"> *</span></td>
+
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">@Html.TextArea("txtTexto", (string)@ViewBag.textCorreo, new { @rows = 10, @cols = 60, @disabled = "disabled" }) </td>
+                        </tr>
+                        <tr>
+                            @*<td style="width:50%"><input id="btnEnviar" type="button" value="Enviar" class="btnAction" /></td>*@
+                            <td style="width:50%; align-content:center"><input id="btnEnviar" type=image src="~/img/Enviar-por-Correo-Electronico.jpg" width="194px" height="43px"></td>
+                            @*<td style="width:50%; align-content:center"><input id="btnCancelar" type="button" value="Cancelar" class="btnAction" /></td>*@
+                            <td style="width:50%"><input id="btnCancelar" type=image src="~/img/Regresar.jpg" width="101px" height="43px"></td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+        </div>
+
+        <br />
+        <!-- Modal Actualizar-->
+        <div id="loadingWindow" style="display:none">
+            Procesando <img src='~/Content/images/ajaxloadingbar.gif' />
+        </div>
+
+        <script>
+
+
+            $(document).ready(function () {
+
+                //jQuery('#divCalculoMonto').show();
+                jQuery('#divFondos').show();
+               // jQuery('#divCotizar').show();
+
+                //Actualiza prima inicial del gri calculo del monto a invertir
+                $("#primaInicialSt").blur(function () {
+                    actualizaGridMonto();
+                });
+
+                document.getElementById("primaInicialSt").onblur = function () {
+
+                    //number-format the user input
+                    this.value = parseFloat(this.value.replace(/,/g, ""))
+                                    .toFixed(2)
+                                    .toString()
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+                    //set the numeric value to a number input
+                    document.getElementById("primaInicial").value = this.value.replace(/,/g, "")
+
+                }
+
+                document.getElementById("aportacionesSt").onblur = function () {
+
+                    //number-format the user input
+                    this.value = parseFloat(this.value.replace(/,/g, ""))
+                                    .toFixed(2)
+                                    .toString()
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+                    //set the numeric value to a number input
+                    document.getElementById("aportaciones").value = this.value.replace(/,/g, "")
+
+                }
+
+
+                var staticNotification1 = $("#staticNotification1").kendoNotification({
+                    appendTo: "#appendto1"
+                }).data("kendoNotification");
+
+                var dialog = $("#sendMail").kendoWindow({
+                    draggable: false,
+                    width: 530,
+                    height: 350,
+                    resizable: false,
+                    title: "Enviar Correo",
+                    visible: false,
+                    modal: true
+                }).data("kendoWindow");
+
+
+                var loadingWindow = $("#loadingWindow").kendoWindow({
+                    title: "Cargando",
+                    draggable: false,
+                    width: 250,
+                    height: 100,
+                    resizable: false,
+                    visible: false,
+                    modal: true
+                }).data("kendoWindow");
+
+                $(document).ajaxStart(function () {
+                    loadingWindow.open();
+                    loadingWindow.center();
+                });
+
+                $(document).ajaxStop(function () {
+                    loadingWindow.close();
+                });
+
+                $("#btnPDF").click(function (e) {
+                    
+                    @*var sumaInicial = parseFloat($("#pctDistribucion1Hidden").val()) + parseFloat($("#pctDistribucion2Hidden").val()) +
+                                                    parseFloat($("#pctDistribucion3Hidden").val());
+                    //console.log("sumaInicial ", sumaInicial);
+                    if (sumaInicial > 100) {
+                        alert("No se puede asignar mas del 100% entre las 3 inversiones")
+                        return;
+                    }
+                    if ($("#iniciaCotizacion").val() > 0) {
+                        if (sumaInicial < 100) {
+                            alert("La disribución del procentaje de inversión debe de ser del 100%")
+                            return;
+                        }
+                    }
+                    var montoMinimoPrima = "@System.Web.Configuration.WebConfigurationManager.AppSettings["montoMinimoPrimaInicial"]";
+                    if (parseFloat($("#primaInicial").val()) < montoMinimoPrima) {
+                       // $("#primaInicial").val(15000);
+                       // $("#primaInicial").text("15000");
+                        hideCamposCotizacion();
+
+                        var notification = $("#popupNotification").kendoNotification({
+                            appendTo: "#appendto"
+                        }).data("kendoNotification");
+                        notification.show("La prima inicial no puede ser menor a $" + montoMinimoPrima)
+                        return;   
+                    }*@
+                    
+                    //invocaCotizacion();
+                    window.open("@Url.Action("DownloadFile", "DatosCotizacion")?modalidad=" + $("#modalidades").val()
+                        + "&numCotizacion=" + $("#numCotizacion").val()
+                        + "&fecNacimiento=" + $("#fechaNac").val() + "&sexo=" + $("#sexo").val()
+                        + "&correo=" + $("#email").val()
+                        + "&moneda=" + $("#monedas").data('kendoDropDownList').text()
+                        + "&plazo=" + $("#plazo").val()
+                        + "&primaIni=" + $("#primaInicial").val()
+                        + "&primaAdd=" + $("#aportaciones").val()
+                        + "&frecuenciaPrima=" + $("#periodicidad").data('kendoDropDownList').text()
+                        + "&perfil=" + $("#perfiles").data('kendoDropDownList').text()
+                        + "&pctInversion1=" + $("#pctDistribucion1Hidden").val() + "&pctInversion2=" + $("#pctDistribucion2Hidden").val()
+                        + "&pctInversion3=" + $("#pctDistribucion3Hidden").val());
+                    dialog.center();
+                    dialog.open();
+                });
+
+                $("#btnCancelar").click(function (e) {
+                    dialog.close();
+                });
+
+                $("#btnEnviar").click(function (e) {
+                    staticNotification1.hide();
+                    $("#loadingBar").show();
+                    if ($("#txtRecibe").val() == null || $("#txtRecibe").val() == "") {
+                        staticNotification1.show("Falta Ingresar Destinatario");
+                        $("#loadingBar").hide();
+                        return;
+                    } else if (!validateEmail($('#txtRecibe').val())) {
+                        staticNotification1.show("Debes ingresar un correo electronico valido");
+                        $("#loadingBar").hide();
+                        return;
+                    }
+                    else if (txtTexto.value == null || txtTexto.value == "") {
+                        staticNotification1.show("Falta Ingresar un Mensaje");
+                        $("#loadingBar").hide();
+                        return;
+                    }
+                    else {
+                        dialog.close();
+                    }
+                    var json = {
+                        "de": $("#txtEnvia").val(),
+                        "para": $("#txtRecibe").val(),
+                        "asunto": $("#txtTitulo").val(),
+                        "mensaje": $("#txtTexto").val(),
+                        "remitente": $("#txtEnvia").val(),
+                        "idCotizacion": $("#numCotizacion").val(),
+                        "numCotizacion": $("#numCotizacion").val(),
+                        "fecNacimiento": $("#fechaNac").val(),
+                        "sexo": $("#sexo").val(),
+                        "correo": $("#email").val(),
+                        "moneda": $("#monedas").data('kendoDropDownList').text(),
+                        "plazo": $("#plazo").val(),
+                        "primaIni": $("#primaInicial").val(),
+                        "primaAdd": $("#aportaciones").val(),
+                        "frecuenciaPrima": $("#periodicidad").data('kendoDropDownList').text(),
+                        "perfil": $("#perfiles").data('kendoDropDownList').text(),
+                        "pctInversion1": $("#pctDistribucion1Hidden").val(),
+                        "pctInversion2": $("#pctDistribucion2Hidden").val(),
+                        "pctInversion3": $("#pctDistribucion3Hidden").val(),
+                        "modalidad": $("#modalidades").val()
+
+                    };
+
+                    //displayLoading(target);
+                    $.ajax({
+                        type: "Post",
+                        url: '../api/rest/services/mailing',
+                        async: false,
+                        data: JSON.stringify(json),
+                        contentType: "application/json",
+                        beforeSend: function (data) {
+                        },
+                        success: function (data) {
+                            //console.log("Enviar correo data ", data);
+                            alert(data);
+                            $("#loadingBar").hide();
+                        },
+                        error: function (xhr) {
+                            alert("Error al enviar correo");
+                            $("#loadingBar").hide();
+                        }
+                    });
+
+                });
+
+                $("#recursosAportaciones").kendoDropDownList({
+                    optionLabel: "Selecciona una opción",
+                    dataTextField: "etiqueta",
+                    dataValueField: "valor",
+                    dataSource: {
+                        transport: {
+                            read: {
+                                url: "../api/rest/services/recursos",
+                            }
+                        }
+                    },
+                    change: function () {
+                        switch (parseInt(this.value())) {
+                            case 0:
+                            case 3:
+                            case 4:
+                            case 5:
+                                jQuery('#tr2').show();
+                                break;
+                            default:
+                                jQuery('#tr2').hide();
+                        }
+                    }
+                });
+
+                $("#recursosPrima").kendoDropDownList({
+                    optionLabel: "Selecciona una opción",
+                    dataTextField: "etiqueta",
+                    dataValueField: "valor",
+                    dataSource: {
+                        transport: {
+                            read: {
+                                url: "../api/rest/services/recursos",
+                            }
+                        }
+                    },
+                    change: function () {
+                        switch (parseInt(this.value())) {
+                            case 0:
+                            case 3:
+                            case 4:
+                            case 5:
+                                jQuery('#tr1').show();
+                                break;
+                            default:
+                                jQuery('#tr1').hide();
+                        }
+                    }
+                });
+
+
+                $("#monedas").kendoDropDownList({
+                    optionLabel: "Selecciona una moneda",
+                    dataTextField: "etiqueta",
+                    dataValueField: "valor",
+                    dataSource: {
+                        transport: {
+                            read: {
+                                url: "../api/rest/services/monedas",
+                            }
+                        }
+                    },
+                    change: function () {
+                        /*
+                        var comboPlazos = $("#plazo").data("kendoComboBox");
+                        comboPlazos.dataSource.transport.options.read.url =
+                            "../api/rest/services/plazos?cod_moneda=" + $("#monedas").val();
+                        comboPlazos.dataSource.read();
+                        comboPlazos.refresh();
+                        */
+                    }
+                });
+
+                $("#formaPago").kendoDropDownList({
+                    optionLabel: "Selecciona una forma de pago",
+                    dataTextField: "etiqueta",
+                    dataValueField: "valor",
+                    dataSource: {
+                        transport: {
+                            read: {
+                                url: "../api/rest/services/formapago",
+                            }
+                        }
+                    },
+                });
+
+                $("#modalidades").kendoDropDownList({
+                    optionLabel: "Selecciona una modalidad",
+                    dataTextField: "etiqueta",
+                    dataValueField: "valor",
+                    dataSource: {
+                        serverFiltering: true,
+                        transport: {
+                            read: {
+                                url: "../api/rest/services/modalidades",
+                            }
+                        }
+                    },
+                    change: function () {
+                        var popupNotification = $("#popupNotification").kendoNotification({
+                            appendTo: "#appendtoModalidades"
+                        }).data("kendoNotification");
+                        var d = new Date();
+                        if ($("#modalidades").val() === '11201') {
+                            popupNotification.hide();
+                            popupNotification.show("Esta modalidad se contratara y administrará bajo el artículo 93 de la LISR-  Aplica para las edades alcanzadas de 55 hasta 70");
+                        } else if ($("#modalidades").val() === '11202') {
+                            popupNotification.hide();
+                            popupNotification.show("Esta modalidad se contratará y administrará bajo el artículo 185 de la LISR- Aplica para las edades alcanzadas de 60 hasta 70");
+                        } else if ($("#modalidades").val() === '11203') {
+                            popupNotification.hide();
+                            popupNotification.show("Esta modalidad se contratará y administrará bajo el artículo 151 de la LISR. Aplica únicamente para la edad alcanzadas de 65.");
+                        }
+                        var comboPerfiles = $("#perfiles").data("kendoDropDownList");
+                        comboPerfiles.dataSource.transport.options.read.url =
+                            "../api/rest/services/perfiles?cod_cia=1&cod_ramo=112&cod_modalidad="
+                                + $("#modalidades").val();
+                        comboPerfiles.dataSource.read();
+                        comboPerfiles.refresh();
+
+                        var comboPeriodicidades = $("#periodicidad").data("kendoDropDownList");
+                        comboPeriodicidades.dataSource.transport.options.read.url =
+                            "../api/rest/services/periodicidades?codModalidad=" + $("#modalidades").val();
+                        comboPeriodicidades.dataSource.read();
+                        comboPeriodicidades.refresh();
+
+                        var comboPlazos = $("#plazo").data("kendoDropDownList");
+                        comboPlazos.dataSource.transport.options.read.url =
+                            "../api/rest/services/plazos?modalidad=" + $("#modalidades").val();
+                        comboPlazos.dataSource.read();
+                        comboPlazos.refresh();
+
+                        //ccc
+                        actualizaGridFondos();
+
+                    }
+                });
+
+
+                $("#perfiles").kendoDropDownList({
+                    //cascadeFrom: "modalidades",
+                    optionLabel: "Selecciona un perfil",
+                    dataTextField: "etiqueta",
+                    dataValueField: "valor",
+                    autoBind: true,
+                    dataSource: {
+                        serverFiltering: true,
+                        transport: {
+                            read: {
+                                url: "../api/rest/services/perfiles?cod_cia=1&cod_ramo=112&cod_modalidad="
+                                    + $("#modalidades").val(),
+                            }
+                        }
+                    },
+                });
+
+                $("#periodicidad").kendoDropDownList({
+                    //cascadeFrom: "modalidades",
+                    optionLabel: "Selecciona una periodicidad",
+                    dataTextField: "etiqueta",
+                    dataValueField: "valor",
+                    autoBind: true,
+                    dataSource: {
+                        serverFiltering: true,
+                        transport: {
+                            read: {
+                                url: "../api/rest/services/periodicidades?codModalidad=" + $("#modalidades").val(),
+                            }
+                        }
+                    },
+                });
+
+                $("#plazo").kendoDropDownList({
+                   // cascadeFrom: "modalidades",
+                    optionLabel: "Selecciona un plazo",
+                    autoBind: true,
+                    dataTextField: "nombre",
+                    dataValueField: "idPlazo",
+                    dataSource: {
+                        transport: {
+                            read: {
+                                //url: "../api/rest/services/plazos?cod_moneda=" + $("#monedas").val(),
+                                url: "../api/rest/services/plazos?modalidad=" + $("#modalidades").val(),
+                            }
+                        }
+                    },
+                });
+
+                $("#diaCobro").kendoDropDownList({
+                    optionLabel: "Selecciona un día de cobro",
+                    dataSource: {
+                        transport: {
+                            read: {
+                                url: "../api/rest/services/dias",
+                            }
+                        }
+                    },
+                });
+
+                //dataSourceCalcMonto = new kendo.data.DataSource({
+                //    transport: {
+                //        read: {
+                //            url: "../api/rest/services/calculamonto?" +
+                //            "prima=" + $("#primaInicial").val()
+                //        }
+                //    },
+                dataSourceCalcMonto = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: "../api/rest/services/calculamonto?" +
+                                "prima=" + $("#primaInicial").val() +
+                                "&idCotizacion=" + $("#numCotizacion").val()
+                        }
+                    },
+                    schema: {
+                        model: {
+                            id: "clave",
+                            fields: {
+                                clave: { editable: false, nullable: true },
+                                valor: { validation: { required: true } }
+                            }
+                        }
+                    }
+                });
+
+                $("#gridCalculoMonto").kendoGrid({
+                    dataSource: dataSourceCalcMonto,
+                    columns: [{
+                        field: "clave",
+                        title: "Concepto"
+                    }, {
+                        field: "valor",
+                        title: "Total"
+                    }
+                    ]
+                });
+
+                dataSourceCalcPrecio = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: "../api/rest/services/calculaprecio?" +
+                            "precio=" + $("#primaInicial").val()
+                        }
+                    },
+                    schema: {
+                        model: {
+                            id: "clave",
+                            fields: {
+                                clave: { editable: false, nullable: true },
+                                valor: { validation: { required: true } }
+                            }
+                        }
+                    }
+                });
+
+                $("#gridCalculoPrecio").kendoGrid({
+                    dataSource: dataSourceCalcPrecio,
+                    columns: [{
+                        field: "clave",
+                        title: "Concepto"
+                    }, {
+                        field: "valor",
+                        title: "Total"
+                    }
+                    ]
+                });
+
+                dataSourceCoberturas = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: "../api/rest/services/coberturas"
+                        }
+                    },
+                    selectable: false,
+                    batch: true,
+                    navigatable: false,
+                    pageable: false,
+                    pageSize: 3,
+                    schema: {
+                        model: {
+                            id: "idCobertura",
+                            fields: {
+                                idCobertura: { editable: false, nullable: true },
+                                nombre: { validation: { required: true } },
+                                porcentaje: { validation: { required: true } }
+                            }
+                        }
+                    }
+                });
+
+                $("#gridCoberturas").kendoGrid({
+                    dataSource: dataSourceCoberturas,
+                    columns: [{
+                        field: "nombre",
+                        title: "Nombre"
+                    }, {
+                        field: "porcentaje",
+                        title: "Porcentaje"
+                    }
+                    ]
+                });
+
+                dataSource = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: "../api/rest/services/fondos?" +
+                                            "primaInicial=" + $("#primaInicial").val() +
+                                            "&pctDistribucion1=" + $("#pctDistribucion1Hidden").val() +
+                                            "&pctDistribucion2=" + $("#pctDistribucion2Hidden").val() +
+                                            "&pctDistribucion3=" + $("#pctDistribucion3Hidden").val() +
+                                            "&idCotizacion=" + $("#numCotizacion").val()+
+                                            "&cod_modalidad="+ $("#modalidades").val()
+                                           // "&modalidad=" + $("modalidades").val
+                        },
+                        update: {
+                            url: "../api/rest/services/fondos/edit?" +
+                            "primaInicial=" + $("#primaInicial").val(),
+                            type: "post",
+                            beforeSend: function (xhr, options) {
+                            },
+                        }
+
+                    },
+                    selectable: true,
+                    batch: true,
+                    schema: {
+                        model: {
+                            id: "idInversion",
+                            fields: {
+                                idInversion: { editable: false, nullable: true },
+                                idCotizacion: { editable: false, nullable: true },
+                                tipoInversion: { editable: false, nullable: true },
+                                pctAnio: { editable: false, validation: { required: true } },
+                                pctDistribucion: { type: "number", validation: { min: 0, max: 100, step: 1, required: { message: "Debe ingresar un valor." }, step: { message: "Se debe ingresar valores enteros" } } },
+                                distInicial: { editable: false, validation: { required: false } }
+                            }
+                        }
+                    },
+                    aggregate: [
+                        { field: "pctDistribucion", aggregate: "sum" },
+                        { field: "distInicial", aggregate: "sum" }
+                    ]
+                });
+
+                $("#gridFondos").kendoGrid({
+                    dataSource: dataSource,
+                    columns: [{
+                        field: "tipoInversion", title: "Tipo Inversión"
+                    }, {
+                        field: "pctDistribucion", title: "Porcentaje de distribución", format: "{0:n1}", template: '#=kendo.format("{0:p}", pctDistribucion / 100)#', footerTemplate: "Total a invertir: #= kendo.toString(sum, '0.00') # "
+                    }, {
+                        field: "distInicial", title: "Distribución Inicial", format: "{0:c}", footerTemplate: "Total: #= kendo.toString(sum, 'C') # "
+                    }],
+                    editable: true,
+                    save: function (data) {
+                        var sumaTotal;
+
+                        if (data.model.idInversion == 1) {
+                            sumaTotal = parseFloat(data.values.pctDistribucion) + parseFloat($("#pctDistribucion2Hidden").val()) +
+                                parseFloat($("#pctDistribucion3Hidden").val());
+                            $("#pctDistribucion1Hidden").prop('value', data.values.pctDistribucion);
+                            if (sumaTotal > 100) {
+                                alert("No se puede asignar mas del 100%")
+                                return;
+                            }
+                        }
+                        if (data.model.idInversion == 2) {
+                            sumaTotal = parseFloat(data.values.pctDistribucion) + parseFloat($("#pctDistribucion1Hidden").val()) +
+                                parseFloat($("#pctDistribucion3Hidden").val());
+                            $("#pctDistribucion2Hidden").prop('value', data.values.pctDistribucion);
+                            if (sumaTotal > 100) {
+                                alert("No se puede asignar mas del 100%")
+                                return;
+                            }
+                        }
+                        if (data.model.idInversion == 3) {
+                            sumaTotal = parseFloat(data.values.pctDistribucion) + parseFloat($("#pctDistribucion1Hidden").val()) +
+                                parseFloat($("#pctDistribucion2Hidden").val());
+                            $("#pctDistribucion3Hidden").prop('value', data.values.pctDistribucion);
+
+                            if (sumaTotal > 100) {
+                                alert("No se puede asignar mas del 100%")
+                                return;
+                            }
+                        }
+                    }
+                });
+
+
+                $("#btnCotizar").click(function () {
+                    $(this).attr('disabled', 'true');
+                    invocaCotizacion();
+                    $(this).removeAttr('disabled');
+                });//cierra onClick
+
+                $("#fechaCotiza").kendoDatePicker({
+                    format: "dd/MM/yyyy",
+                    animation: false
+                });
+
+                var todayDate = kendo.toString(kendo.parseDate(new Date()), 'dd/MM/yyyy');
+                $('#fechaCotiza').data("kendoDatePicker").value(todayDate);
+                $("#fechaCotiza").data("kendoDatePicker").trigger("change");
+
+                $("#fechaNac").kendoDatePicker({
+                    format: "dd/MM/yyyy",
+                    animation: false
+                });
+
+                if ('@ViewBag.showTables' == "true") {
+
+                    if ($("#numCotizacion" > 0)) {
+                        showCamposCotizacion();
+                    }
+
+                    actualizaGridFondos();
+                    actualizaGridPrecio();
+                    actualizaGridMonto();
+                }
+            });
+
+            $('#btnContinuar').click(function () {
+                //displayLoading(document.body);
+                //var wsUrlInvoke = "@System.Web.Configuration.WebConfigurationManager.AppSettings["HSBCWs2"]";
+                //alert("Se toma del archivo web.config la siguiente llave HSBCWs2 para la invocacion : " + wsUrlInvoke);
+                invocaCotizacion();
+                var sumaPrima = parseInt($("#primaInicial").val()); //+ 600;
+
+                var sumaInicial = parseFloat($("#pctDistribucion1Hidden").val()) + parseFloat($("#pctDistribucion2Hidden").val()) +
+                                                parseFloat($("#pctDistribucion3Hidden").val());
+                var msgError = "";
+                var idConfirm = 0;
+                if (sumaInicial < 100) {
+                    idConfirm = 1;
+                    msgError = "No se ha indicado el 100% de las aportaciones";
+                }
+
+                var aportTotal = 0;
+                var aport = jQuery('#aportaciones').val();
+                var periodicidad = jQuery('#periodicidad').val();
+
+                if (aport != '' && aport > 0) {
+                    switch (periodicidad) {
+                        case '2':
+                            aportTotal = aport * 2;
+                            break;
+                        case '3':
+                            aportTotal = aport * 4;
+                            break;
+                        case '4':
+                            aportTotal = aport * 12;
+                            break;
+                        case '10':
+                            aportTotal = aport;
+                            break;
+                    }
+                }
+
+                var msgJsonTest = {
+                    idTransaccion: parseInt($("#idTransaccion").val()),
+                    idPromotor: $("#idPromotor").val(),
+                    idConfirmacion: idConfirm,
+                    descripcionError: msgError,
+                    idCotizacionMapfre: $("#numCotizacion").val(),
+                    email: $("#email").val(),
+                    primaTotal: parseFloat(sumaPrima) + parseFloat(aportTotal),
+                    idListaCotizacion: "@ViewBag.idListaCotizacion"
+                }
+                var datos = {
+                    msgJson: msgJsonTest
+                }
+
+                $.ajax({
+                    type: "Post",
+                    url: '../api/rest/services/invokews2',
+                    async: false,
+                    data: JSON.stringify(msgJsonTest),
+                    contentType: "application/json",
+                    success: function (data) {
+                        if (data != null && data.substring(0,5) !== 'error') {
+                            alert('Petición enviada');
+                        }
+                        else {
+                            alert(data);
+                        }
+
+                        if (data == null) {
+                            alert('Hubo un error al realizar la cotización');
+                        }
+                    },
+                    error: function (xhr) {
+                        if (data != null) {
+                            alert('Error al enviar petición: ');
+                        }
+                    }
+                });
+
+            });
+
+            function actualizaGridFondos() {
+                var urlCalculoFondos = "../api/rest/services/fondos?" +
+                                            "primaInicial=" + $("#primaInicial").val() +
+                                            "&pctDistribucion1=" + $("#pctDistribucion1Hidden").val() +
+                                            "&pctDistribucion2=" + $("#pctDistribucion2Hidden").val() +
+                                            "&pctDistribucion3=" + $("#pctDistribucion3Hidden").val() +
+                                            "&idCotizacion=" + $("#numCotizacion").val()+
+                                            "&cod_modalidad=" + $("#modalidades").val();
+
+                var gridFondos = $("#gridFondos").data("kendoGrid");
+                gridFondos.dataSource.transport.options.read.url = urlCalculoFondos;
+                gridFondos.dataSource.read();
+                gridFondos.refresh();
+            }
+
+            function actualizaGridMonto() {
+                var urlCalculoMonto = "../api/rest/services/calculamonto?" + "prima=" + $("#primaInicial").val() + "&idCotizacion=" + $("#numCotizacion").val()
+                var gridCalculoMonto = $("#gridCalculoMonto").data("kendoGrid");
+                gridCalculoMonto.dataSource.transport.options.read.url = urlCalculoMonto;
+                gridCalculoMonto.dataSource.read();
+                gridCalculoMonto.refresh();
+            }
+
+            function actualizaGridPrecio() {
+                var urlCalculoPrecio = "../api/rest/services/calculaprecio?" + "precio=" + $("#primaInicial").val()
+                var gridCalculoPrecio = $("#gridCalculoPrecio").data("kendoGrid");
+                gridCalculoPrecio.dataSource.transport.options.read.url = urlCalculoPrecio;
+                gridCalculoPrecio.dataSource.read();
+                gridCalculoPrecio.refresh();
+            }
+
+            function actualizaGridCoberturas() {
+                $('#gridCoberturas').data('kendoGrid').dataSource.read();
+                $('#gridCoberturas').data('kendoGrid').refresh();
+            }
+
+            function GetPDF() {
+                window.open("@Url.Action("DownloadFile", "DatosCotizacion")?datos=asdf");
+                var dialog = $("#sendMail").kendoWindow({
+                    title: "Enviar Correo",
+                    visible: false,
+                    modal: true
+                }).data("kendoWindow");
+
+                dialog.center();
+                dialog.open();
+            }
+
+            function showCamposCotizacion() {
+                //alert("ShowCampos");
+                jQuery('#labelNumCotizacion').show();
+                jQuery('#numCotizacion').show();
+               // $("#btnCotizar").prop('value', 'Recotizar');
+                jQuery('#divCalculoMonto').show();
+                jQuery('#divFondos').show();
+               // jQuery('#divCotizar').show();
+                jQuery('#btnContinuar').show();
+                jQuery('#btnPDF').show();
+
+            }
+
+            function hideCamposCotizacion() {
+                jQuery('#labelNumCotizacion').hide();
+                jQuery('#numCotizacion').hide();
+               // $("#btnCotizar").prop('value', 'Cotizar');
+                jQuery('#divCalculoMonto').hide();
+                jQuery('#divFondos').hide();
+                jQuery('#divCotizar').hide();
+                jQuery('#btnContinuar').hide();
+                jQuery('#btnPDF').hide();
+            }
+
+            function GetValComplemento() {
+                //return true;
+                var popupNotification = $("#popupNotification").kendoNotification({
+                    appendTo: "#appendto"
+                }).data("kendoNotification");
+                var d = new Date();
+                if (jQuery('#email').val() === '') {
+                    popupNotification.show("Falta ingresar el correo electronico");
+                    return false;
+                } else {
+                    if (!validateEmail(jQuery('#email').val())) {
+                        popupNotification.show("Debes ingresar un correo electronico valido");
+                        return false;
+                    }
+                }
+                if (jQuery('#perfiles').val() === '') {
+                    popupNotification.show('Falta ingresar el dato perfil');
+                    return false;
+                }
+                if (jQuery('#primaInicial').val() === '') {
+                    popupNotification.show('Falta ingresar el dato prima inicial');
+                    return false;
+                }
+                if (jQuery('#modalidades').val() === '') {
+                    popupNotification.show('Falta ingresar el dato modalidad');
+                    return false;
+                }
+
+                var aportaciones = jQuery('#aportaciones').val();
+                var monto = aportaciones.split(".", 1);
+                //Validaciones ccc
+                //alert(monto);
+                if (monto > 0 && monto < 1000) {
+                    popupNotification.show('La aportación debe ser mayor o igual a 1000');
+                    return false;
+                }
+                if (jQuery('#aportaciones').val() === '') {
+                    popupNotification.show('Falta ingresar el dato aportaciones periodicas');
+                    return false;
+                }
+                if (jQuery('#monedas').val() === '') {
+                    popupNotification.show('Falta ingresar el dato moneda');
+                    return false;
+                }
+                if (jQuery('#periodicidad').val() === '' && monto > 0 ) {
+                    popupNotification.show('Falta ingresar el dato periodicidad');
+                    return false;
+                }
+                if (jQuery('#plazo').val() === '') {
+                    popupNotification.show('Falta ingresar el dato plazo');
+                    return false;
+                }
+                /*
+                if (jQuery('#formaPago').val() === '') {
+                    popupNotification.show('Falta ingresar el dato forma de pago');
+                    return false;
+                }
+                */
+                if (jQuery('#diaCobro').val() === '' && monto > 0) {
+                    popupNotification.show('Falta ingresar el dato día de cobro de la aportación periódica ');
+                    return false;
+                }
+
+
+                return true;
+            }
+
+            function calc(val) {
+                var sumaInicial = parseFloat($("#pctDistribucion1Hidden").val())
+                    + parseFloat($("#pctDistribucion2Hidden").val())
+                    + parseFloat($("#pctDistribucion3Hidden").val());
+                return sumaInicial;
+            }
+
+
+            function SendMail() {
+                jQuery('#btnEnviar').attr("disabled", "true");
+
+                $.post("@Url.Action("SendMail", "DatosCotizacion")",
+                {
+                    recibe: jQuery("#txtRecibe").val(),
+                    envia: jQuery("#txtEnvia").val(),
+                    titulo: jQuery("#txtTitulo").val(),
+                    texto: jQuery("#txtTexto").val()
+                },
+                    function (data) {
+                        if (data)
+                            if (!data.isOK)
+                                alert("Lo sentimos el correo no pudo ser enviado");
+                            else {
+                                dialogMail.dialog("close");
+                                alert("El correo fue enviado correctamente");
+                            }
+
+                        jQuery('#btnEnviar').removeAttr("disabled");
+                    },
+                    "json"
+                );
+            }
+
+            function onlyNumbers(e) {
+                var keynum;
+                var keychar;
+                var numcheck;
+                if (window.event) // IE
+                {
+                    keynum = e.keyCode;
+                }
+                else if (e.which) // Netscape/Firefox/Opera
+                {
+                    keynum = e.which;
+                }
+                if ((keynum >= 48) && (keynum <= 57)) {
+                    return (true);
+                }
+
+                var good_codes = [8, 14, 15, 37, 38, 39, 40];
+                for (i = 0; i < good_codes.length; i++) {
+                    if (good_codes[i] == keynum) {
+                        return (true);
+                    }
+                }
+
+                return (false);
+            }
+
+            function validaEdad()
+            {
+                var jsonEdad = {
+                    "fecNacimiento": $("#fechaNac").val(),
+                    "edadAlcanzada": $("#plazo").val(),
+                    "modalidad": $("#modalidades").val()
+                };
+
+                $.ajax({
+                    type: "post",
+                    url: '../api/rest/services/edadValida',
+                    async: false,
+                    data: JSON.stringify(jsonEdad),
+                    contentType: "application/json",
+                    success: function (data) {
+                        //alert("return: " + data);
+                        if (data != null) {
+                            $("#validaEdad").prop('value', "0");
+                            var notification = $("#popupNotification").kendoNotification({
+                                appendTo: "#appendto"
+                            }).data("kendoNotification");
+                            notification.show(data)
+                        }
+                        else
+                        {
+                            $("#validaEdad").prop('value', "1");
+                        }
+                    },
+                    error: function (xhr) {
+                        var notification = $("#popupNotification").kendoNotification({
+                            appendTo: "#appendto"
+                        }).data("kendoNotification");
+                        notification.show("Error")
+                    }
+                });
+            }
+
+            function invocaCotizacion() {
+
+                //alert("antes de invocar validad Edad");
+                validaEdad();
+
+                var valida = $("#validaEdad").val();
+
+                //alert("en invoca cotizacion " + valida);
+
+                if (valida == "1" ) {
+
+                   // alert("despues de validad Edad");
+
+                    var sumaInicial = parseFloat($("#pctDistribucion1Hidden").val()) + parseFloat($("#pctDistribucion2Hidden").val()) +
+                                                        parseFloat($("#pctDistribucion3Hidden").val());
+                    //console.log("sumaInicial ", sumaInicial);
+                    if (sumaInicial > 100) {
+                        alert("No se puede asignar mas del 100% entre las 3 inversiones")
+                        return;
+                    }
+                    if (sumaInicial < 100) {
+                        alert("Debes asignar el 100% del porcentaje de distribución")
+                        return;
+                    }
+                    if ($("#iniciaCotizacion").val() > 0) {
+                        if (sumaInicial < 100) {
+                            alert("La disribución del porcentaje de inversión debe de ser del 100%")
+                            return;
+                        }
+                    }
+                    var montoMinimoPrima = "@System.Web.Configuration.WebConfigurationManager.AppSettings["montoMinimoPrimaInicial"]";
+                    if (parseFloat($("#primaInicial").val()) < montoMinimoPrima) {
+                       // $("#primaInicial").val(15000);
+                       // $("#primaInicial").text("15000");
+                        hideCamposCotizacion();
+
+                        var notification = $("#popupNotification").kendoNotification({
+                            appendTo: "#appendto"
+                        }).data("kendoNotification");
+                        notification.show("La prima inicial no puede ser menor a $" + montoMinimoPrima)
+                        return;
+                    }
+
+                    if (GetValComplemento()) {
+                        var numCotizacion = $("#numCotizacion").val();
+
+                        var msgJson = {
+                            "idPromotor": $("#idPromotor").val(),
+                            "idTransaccion": $("#idTransaccion").val(),
+                            "numCotizacion": $("#numCotizacion").val(),
+                            "fechaCotizacion": $("#fechaCotiza").val(),
+                            "fechaNacimiento": $("#fechaNac").val(),
+                            "sexo": $("#sexo").val(),
+                            "correoElectronico": $("#email").val(),
+                            "perfil": $("#perfiles").val(),
+                            "primaInicial": $("#primaInicial").val(),
+                            "modalidad": $("#modalidades").val(),
+                            "aportaciones": $("#aportaciones").val(),
+                            "moneda": $("#monedas").val(),
+                            "periodicidad": $("#periodicidad").val(),
+                            "periodicidadText": $("#periodicidad").data('kendoDropDownList').text(),
+                            "plazo": $("#plazo").val(), // cambiar
+                            "formaPago": $("#formaPago").val(),
+                            "diaCobro": $("#diaCobro").val(),
+                            "pctInversion1": $("#pctDistribucion1Hidden").val(),
+                            "pctInversion2": $("#pctDistribucion2Hidden").val(),
+                            "pctInversion3": $("#pctDistribucion3Hidden").val(),
+                            "perfilText": $("#perfiles").data('kendoDropDownList').text(),
+                            "modalidadText": $("#modalidades").data('kendoDropDownList').text(),
+                            "monedaText": $("#monedas").data('kendoDropDownList').text()
+                        };
+
+                        var json = {
+                            "idPromotor": $("#idPromotor").val(),
+                            "idTransaccion": $("#idTransaccion").val(),
+                            "numCotizacion": $("#numCotizacion").val(),
+                            "fechaCotizacion": $("#fechaCotiza").val(),
+                            "fechaNacimiento": $("#fechaNac").val(),
+                            "sexo": $("#sexo").val(),
+                            "correoElectronico": $("#email").val(),
+                            "perfil": $("#perfiles").val(),
+                            "primaInicial": $("#primaInicial").val(),
+                            "modalidad": $("#modalidades").val(),
+                            "aportaciones": $("#aportaciones").val(),
+                            "moneda": $("#monedas").val(),
+                            "periodicidad": $("#periodicidad").val(),
+                            "plazo": $("#plazo").val(),
+                            "formaPago": $("#formaPago").val(),
+                            "diaCobro": $("#diaCobro").val(),
+                            "pctInversion1": $("#pctDistribucion1Hidden").val(),
+                            "pctInversion2": $("#pctDistribucion2Hidden").val(),
+                            "pctInversion3": $("#pctDistribucion3Hidden").val(),
+                            "msgJson": JSON.stringify(msgJson)
+                        };
+
+                        $.ajax({
+                            type: "Post",
+                            url: '../api/rest/services/idcotizacion',
+                            async: false,
+                            data: JSON.stringify(json),
+                            contentType: "application/json",
+                            success: function (data) {
+                                $("#numCotizacion").prop('value', data);
+                                $("#iniciaCotizacion").prop('value', 1);
+                                if (data != null && data == 0) {
+                                    var notification = $("#popupNotification").kendoNotification({
+                                        appendTo: "#appendto"
+                                    }).data("kendoNotification");
+                                    notification.show("Se han encontrado errores al realizar la cotización, por favor intente nuevamente ")
+                                    return;
+                                }
+                            },
+                            error: function (xhr) {
+                                var notification = $("#popupNotification").kendoNotification({
+                                    appendTo: "#appendto"
+                                }).data("kendoNotification");
+                                notification.show("Error 2" + '@ViewBag.errorMsg')
+                                return;
+                                //kendo.alert("Error al actualizar la información" + xhr);
+                            }
+                        });
+
+                        //}
+
+                        $("#txtRecibe").prop('value', $("#email").val());
+
+                        txtTexto.value = "Apreciable cliente, \n\nAnexo encontrará la cotización referente al producto HSBC-MAPFRE Inversión Retiro. " +
+                        " \n\nLe recordamos que para la contratación del seguro es necesario acudir a cualquier sucursal de HSBC. ";
+
+                        //alert("noCotizacion: " + $("#numCotizacion").val());
+                        if ($("#numCotizacion").val() > 0) {
+                            showCamposCotizacion();
+                        }
+
+                        actualizaGridFondos();
+                        actualizaGridPrecio();
+                        actualizaGridMonto();
+
+                    }//cierra if validacion campos
+                }//cierra if validaEdad
+
+            }
+
+            function displayLoading(target) {
+                var element = $(target);
+                kendo.ui.progress(element, true);
+                setTimeout(function () {
+                    kendo.ui.progress(element, false);
+                }, 4000);
+            }
+
+            function validateEmail(email) {
+                var re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            function actualiza() {
+                alert('prueba act');
+            };
+
+
+
+        </script>
+
+
+
+</body>
+</html>

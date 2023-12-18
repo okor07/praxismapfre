@@ -1,0 +1,132 @@
+﻿
+@model MapfreHSBC.Models.Cotizacion.ConsultaCotizaciones.Cotizaciones
+@{
+    Layout = "~/Views/Shared/_Master.cshtml";
+
+    ViewBag.Title = "Busqueda";
+}
+
+<script src="/Scripts/jquery-1.10.2.js"></script>
+<script src="/Scripts/bootstrap.js"></script>
+<script src="/Scripts/respond.js"></script>
+<script src="~/Scripts/General.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+
+@using (Html.BeginForm("Busqueda", "ConsultaCotizaciones", FormMethod.Post,
+                                      new { enctype = "multipart/form-data" }))
+    {
+    @Html.ValidationSummary(true)
+
+<table style="width:100%!important;">
+
+    <tr>
+
+        <td colspan="4" style="vertical-align:top" align="right">
+            <table style="width:100%!important;">
+                <tr>
+                    <td style="width:50%"></td>
+                    <td style="width:50%" colspan="2" class="TitBusquedaCotBold">1.- Seleccione el Producto a cotizar</td>
+                </tr>
+                <tr>
+
+                    <td></td>
+                    <td class="BOLD">Producto:<span class="Txt_aviso"></span></td>
+                    <td>@Html.DropDownList("producto", new SelectList(ViewBag.Producto, "Value", "Text"))</td>
+                </tr>
+                <tr>
+                    <td style="width:50%"></td>
+                    <td style="width:50%" colspan="2" class="TitBusquedaCotBold">2.- Datos de busqueda, introduce uno o mas datos para buscar</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="BOLDTEXT">No. de cotizacion:<span class="Txt_aviso"></span></td>
+                    <td>@Html.TextBox("txtNoCotizacion")</td>
+                </tr>
+                <tr>
+                    <td>
+                    <td class="BOLDTEXT">Correo Electronico:<span class="Txt_aviso"></span></td>
+                    <td>@Html.TextBox("txtCorreo")</td>
+                </tr>
+            </table>
+
+         </td>
+        <td>
+
+        </td>
+
+     </tr>
+</table>
+
+<center>
+        <table>
+            <tr>
+                <td style="width:33%"></td>
+                <td style="width:34%"><input id="btnCotizar" type="button" value="BUSCAR" class="btnBuscar redondo" onclick="javascript: GetCotizaciones(true)" /></td>
+                <td style="width:33%"></td>
+
+            </tr>
+        </table>
+</center>
+
+@*<table>*@
+
+    @*<tr>
+        <td>*@
+                <center>
+                    <table id="tblProducto" style="width:100%!important; display:none;">
+                        <tr>
+                            <td colspan="2" class="TitCotiza11BlaBold"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="gridCotizaciones"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+        @*</td>
+    </tr>*@
+
+@*</table>*@
+    
+
+    <script type="text/javascript">
+
+        function GetCotizaciones(isFirst) {
+            if (GetValComplemento()) {
+                var data = {};
+                var Complemento = {
+                    Cotizacion: jQuery('#txtNoCotizacion').val(),
+                    correo: jQuery('#txtCorreo').val()
+                }
+
+                $.post("../api/ConsultaCotizaciones/GetCotizaciones",
+               data
+               ).done(function (data) {
+                   if (isFirst) {
+                       jQuery('#tblProducto').show();
+                   }
+
+                   jQuery('#gridCotizaciones').html(data);
+               });
+
+            }
+            };
+        function GetValComplemento() {
+
+            if (jQuery('#producto').val() === '') {
+                alert('Falta Seleccionar un Producto');
+                return false;
+            }
+            if (jQuery('#txtNoCotizacion').val() === '' && jQuery('#txtCorreo').val() === '') {
+                alert('Debe Ingresar Algun Dato para Buscar');
+                return false;
+            }
+
+            return true;
+
+        }
+
+    </script>
+
+}

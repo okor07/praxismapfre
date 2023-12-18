@@ -1,0 +1,447 @@
+P {
+  color: black;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px;
+  font-style: normal
+}
+
+H1 {
+  color: black;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal
+}
+
+H2 {
+  color: black;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-weight: bold;
+  font-size: 11px;
+  font-style: normal
+}
+
+H3 {
+  color: red;
+  font-family: Arial, Helvética;
+  font-size: 11px;
+  background-color: white;
+  font-style: normal
+}
+
+H4 {
+  color: black;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-weight: bold;
+  font-size: 12px
+}
+
+A:ACTIVE {
+  font-style: normal;
+  color: blue;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px
+}
+
+A:HOVER {
+  font-style: normal;
+  color: red;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px
+}
+
+A:LINK {
+  font-style: normal;
+  color: red;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px
+}
+
+A:VISITED{
+  font-style: normal;
+  color: purple;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px
+}
+
+
+TABLE {
+	font-style: normal;
+	color: black;
+	font-family: Arial, Helvética;
+	background-color: white;
+	font-size: 11px;
+	text-align: left;
+	border-collapse: separate;
+	border-width: 0px;
+	width: 623px;
+}
+
+TABLE.quiz {
+	width: 623px;
+}
+
+TABLE.BORDER {
+  font-style: normal;
+  color: black;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px;
+  text-align: left;
+  border-width: 0px;
+}
+
+TH {
+  font-style: normal;
+  color: black;
+  font-family: Arial, Helvética;
+  background-color: #cccccc;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  border-width: 0px;
+}
+
+TD {
+  font-style: normal;
+  color: black;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px;
+  text-align: left;
+  border-width: 0px;
+}
+
+TD.COMMENT {
+	color: black;
+	font-style: normal;
+	font-family: Arial, Helvética;
+	background-color: white;
+	font-size: 11px;
+	text-align: left;
+}
+
+TD.FOOTER {
+	color: BACK;
+	font-style: normal;
+	font-family: Arial, Helvética;
+	background-color: #CCCCCC;
+	font-size: 11px;
+	text-align: left;
+}
+
+TD.QUEST {
+	font-style: normal;
+	color: black;
+	font-family: Arial, Helvética;
+	background-color: #ebebeb;
+	font-size: 11px;
+	text-align: left;
+	width: 97%;
+}
+
+TD.QUESTNUM {
+	font-style: normal;
+	color: black;
+	font-family: Arial, Helvética;
+	background-color: #ebebeb;
+	font-size: 11px;
+	text-align: right;
+	width: 3%;
+}
+
+TD.ANS {
+  color: black;
+  font-style: normal;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px;
+}
+
+TD.ANSRIGHT {
+  color: black;
+  font-style: normal;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px;
+  text-align: right;
+  width: 15%;
+}
+
+TD.BOLD {
+  color: black;
+  font-style: normal;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px;
+  font-weight: bold;
+}
+TD.BOLDTEXT {
+  color: black;
+  font-style: normal;
+  font-family: Arial, Helvética;
+  background-color: white;
+  font-size: 11px;
+  font-weight: bold;
+  text-align:left;
+}
+
+INPUT{
+  font-family: Arial, Helvética;
+  font-size: 11px;
+  font-style: normal;
+  color: black;
+  min-width: 124px;
+}
+
+SELECT {
+  font-style: normal;
+  color: black;
+  font-family: Arial, Helvética;
+  font-size: 11px;
+  text-align: left;
+  min-width: 128px;
+}
+
+BODY {
+  color: black;
+  font-family: Arial, Helvética;
+  margin: 0px;
+  font-size: 11px;
+  background-color: white;
+  font-style: normal;
+  border-color: white
+}
+
+DIV {
+	color: black;
+  font-family: Arial, Helvética;
+  font-size: 11px;
+  background-color: white;
+  font-style: normal;
+}
+
+DIV.ERROR{
+  color: red;
+  font-family: Arial, Helvética;
+  font-size: 11px;
+  background-color: white;
+  font-style: normal
+}
+
+DIV.ERROR12{
+  color: red;
+  font-family: Arial, Helvética;
+  font-size: 12px;
+  background-color: white;
+  font-style: normal;
+  font-weight: bold;
+}
+
+div.centered 
+{
+	text-align: center;
+}
+div.centered table 
+{
+	margin: 0 0 0 0; 
+	text-align: left;
+}
+.Txt_aviso{
+	COLOR: #FF0000;
+	FONT-FAMILY: 'Arial,Helvetica';
+	FONT-SIZE: 12px;	
+}
+.Txt_titulo_seccion{
+	COLOR: #000000;
+	FONT-FAMILY: 'Arial,Helvetica';
+	FONT-SIZE: 12px;
+	FONT-WEIGHT: bold;	
+}
+
+
+.wgTable { 
+    width:100%!important; 
+}
+
+.wgTable th {
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(164,164,164,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(164,164,164,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(164,164,164,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(164,164,164,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(164,164,164,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(164,164,164,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#a4a4a4', GradientType=0 );
+}
+
+.wgTable td {
+    vertical-align: central!important;
+    text-align: center!important;
+    padding: 5px;
+}
+
+.wgDisabled td{
+    color: #949494!important;
+}
+
+.wgRowAlter td { 
+    background-color: #D8D8D8!important; 
+}
+
+.wgRow td {
+    background-color: #FFFFFF!important;
+}
+
+.btnAction {
+    font-weight: bold!important;
+	font-size:13px;
+    color:#ffffff;
+	text-align:center;
+    border: hidden;
+    padding: 7px;
+
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 14%, rgba(204,0,0,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(14%, rgba(255,0,0,1)), color-stop(100%, rgba(204,0,0,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 14%, rgba(204,0,0,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 14%, rgba(204,0,0,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 14%, rgba(204,0,0,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 14%, rgba(204,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cc0000', GradientType=0 );
+}
+
+.btnBuscar {
+    font-weight: bold!important;
+	font-size:13px;
+    color:#050505;
+	text-align:center;
+    border: hidden;
+    padding: 7px;
+
+
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(top, rgba(164,164,164,1) 0%, rgba(164,164,164,1) 14%, rgba(164,164,164,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(14%, rgba(255,0,0,1)), color-stop(100%, rgba(204,0,0,1)));
+    background: -webkit-linear-gradient(top, rgba(164,164,164,1) 0%, rgba(164,164,164,1) 14%, rgba(164,164,164,1) 100%);
+    background: -o-linear-gradient(top, rgba(164,164,164,1) 0%, rgba(164,164,164,1) 14%, rgba(164,164,164,1) 100%);
+    background: -ms-linear-gradient(top, rgba(164,164,164,1) 0%, rgba(164,164,164,1) 14%, rgba(164,164,164,1) 100%);
+    background: linear-gradient(to bottom, #cccccc 0%, #cccccc 14%, #cccccc 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF7F7', endColorstr='#FFF7F7', GradientType=0 );
+}
+.redondo {
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius:  5px 5px 5px 5px;
+	border-radius:   5px 5px 5px 5px;
+} {
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%!important; /* Full width */
+    height: 100%!important; /* Full height */
+    overflow: no-display; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*ESTILOS CONSULTA*/
+.wgTableConsult { 
+    width:100%!important; 
+}
+
+.wgTableConsult th {
+    background: rgba(219,76,76,1);
+    background: -moz-linear-gradient(top, rgba(219,76,76,1) 0%, rgba(171,36,36,1) 50%, rgba(219,76,76,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(219,76,76,1)), color-stop(50%, rgba(171,36,36,1)), color-stop(100%, rgba(219,76,76,1)));
+    background: -webkit-linear-gradient(top, rgba(219,76,76,1) 0%, rgba(171,36,36,1) 50%, rgba(219,76,76,1) 100%);
+    background: -o-linear-gradient(top, rgba(219,76,76,1) 0%, rgba(171,36,36,1) 50%, rgba(219,76,76,1) 100%);
+    background: -ms-linear-gradient(top, rgba(219,76,76,1) 0%, rgba(171,36,36,1) 50%, rgba(219,76,76,1) 100%);
+    background: linear-gradient(to bottom, rgba(219,76,76,1) 0%, rgba(171,36,36,1) 50%, rgba(219,76,76,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db4c4c', endColorstr='#db4c4c', GradientType=0 );
+    color:white;
+    font-weight: bold;
+    padding:5px;
+}
+
+.wgTableConsult tr td {
+    padding:10px!important;
+}
+
+.wgTableConsult tr a {
+    background-color:transparent!important;
+}
+
+.wgTableConsult td {
+    vertical-align: central!important;
+    text-align: center!important;
+    padding: 5px!important;
+}
+
+.wgDisabled td{
+    color: #949494!important;
+}
+
+tr.wgRowAlterConsult td{ 
+    background: rgba(255,242,242,1);
+    background: -moz-linear-gradient(top, rgba(255,242,242,1) 0%, rgba(245,213,213,1) 50%, rgba(255,242,242,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,242,242,1)), color-stop(50%, rgba(245,213,213,1)), color-stop(100%, rgba(255,242,242,1)));
+    background: -webkit-linear-gradient(top, rgba(255,242,242,1) 0%, rgba(245,213,213,1) 50%, rgba(255,242,242,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,242,242,1) 0%, rgba(245,213,213,1) 50%, rgba(255,242,242,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,242,242,1) 0%, rgba(245,213,213,1) 50%, rgba(255,242,242,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,242,242,1) 0%, rgba(245,213,213,1) 50%, rgba(255,242,242,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff2f2', endColorstr='#fff2f2', GradientType=0 );
+}
+
+/*.wgRowConsultHover td {*/
+.wgTableConsult tr:hover td {
+    background: rgba(242,242,255,1);
+    background: -moz-linear-gradient(top, rgba(242,242,255,1) 0%, rgba(213,224,245,1) 14%, rgba(213,224,245,1) 79%, rgba(242,242,255,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(242,242,255,1)), color-stop(14%, rgba(213,224,245,1)), color-stop(79%, rgba(213,224,245,1)), color-stop(100%, rgba(242,242,255,1)));
+    background: -webkit-linear-gradient(top, rgba(242,242,255,1) 0%, rgba(213,224,245,1) 14%, rgba(213,224,245,1) 79%, rgba(242,242,255,1) 100%);
+    background: -o-linear-gradient(top, rgba(242,242,255,1) 0%, rgba(213,224,245,1) 14%, rgba(213,224,245,1) 79%, rgba(242,242,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(242,242,255,1) 0%, rgba(213,224,245,1) 14%, rgba(213,224,245,1) 79%, rgba(242,242,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(242,242,255,1) 0%, rgba(213,224,245,1) 14%, rgba(213,224,245,1) 79%, rgba(242,242,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2ff', endColorstr='#f2f2ff', GradientType=0 );
+}
+
+.wgRowConsult td {
+    background-color: #FFFFFF!important;
+}

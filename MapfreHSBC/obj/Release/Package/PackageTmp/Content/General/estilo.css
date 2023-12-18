@@ -1,0 +1,400 @@
+BODY {
+    color:#000000;
+    background-color: #FFFFFF;
+	padding:0; 
+	margin: 0 0 0 0;
+    font-family:arial,helvetica;
+    font-weight: normal;
+	text-decoration: none;
+}
+
+.coverageClass{
+	font-size: 12px;	
+}
+
+.TitPleca13Bla  {
+	font-weight:bold;
+	font-size:13px;
+    color:#FFFFFF;
+}
+
+.TitCotiza11BlaBold {
+	font-weight: bold;
+	font-size:11px;
+    color:#ffffff;
+	text-align:center;
+
+    padding-bottom:1px;
+    padding-top:6px;
+    background:  rgba(30,17,97,1) ;
+    /*
+    background: rgba(212,228,239,1);
+    background: -moz-linear-gradient(top, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
+    background: -webkit-linear-gradient(top, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: -o-linear-gradient(top, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: -ms-linear-gradient(top, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: linear-gradient(to bottom, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=0 );
+
+    */
+}
+
+
+.Titulos{
+    font-weight: bold;
+	font-size:11px;
+    color:#ffffff;
+	text-align:center;
+
+    padding-bottom:1px;
+    padding-top:6px;
+    background:  rgba(30,17,97,1) ;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1E1161', endColorstr='#1E1161', GradientType=0 );
+    /*
+        
+    background: -moz-linear-gradient(top, rgba(30,17,97,1) 0%, rgba(134,174,204,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(30,17,97,1)), color-stop(100%, rgba(134,174,204,1)));
+    background: -webkit-linear-gradient(top,rgba(30,17,97,1) 0%,rgba(134,174,204,1) 100%);
+    background: -o-linear-gradient(top,rgba(30,17,97,1) 0%,rgba(134,174,204,1) 100%);
+    background: -ms-linear-gradient(top,rgba(30,17,97,1) 0%, rgba(134,174,204,1) 100%);
+    background:  linear-gradient(to bottom, rgba(30,17,97,1), rgba(134,174,204,1));    
+
+    */
+}
+
+.bordeIndex {
+
+    font-weight: bold;
+	font-size:11px;
+    color:#ffffff;
+	text-align:center;
+
+    /*background-image:url(pleca_header_back_pre.jpg);*/
+   background-image: url(../../img/pleca_header_corn_pre.jpg);
+   background-repeat:no-repeat;
+}
+
+.borde {
+
+    font-weight: bold;
+	font-size:11px;
+    color:#ffffff;
+	text-align:center;
+
+    /*background-image:url(pleca_header_back_pre.jpg);*/
+   background-image: url(../../img/barra_sup2.png);
+   background-repeat:no-repeat;
+}
+
+.bordeDetalle {
+
+    font-weight: bold;
+	font-size:11px;
+    color:#ffffff;
+	text-align:center;
+
+    /*background-image:url(pleca_header_back_pre.jpg);*/
+   background-image: url(../../img/barra_sup_mano4.png);
+   background-repeat:no-repeat;
+}
+
+
+.bordeInferior {
+
+    font-weight: bold;
+	font-size:11px;
+    color:#ffffff;
+	text-align:center;
+
+   background-image: url(../../img/pleca_footer_corn_pre.jpg);
+   background-repeat:no-repeat;
+}
+
+.TitCotiza11NegBold {
+	font-weight: bold;
+	font-size:11px;
+    color:#000000;
+	text-align:center;
+}
+
+.Etiqueta09NegNormal  {
+	font-weight:normal;
+	font-size:9px;
+    color:#000000;
+}
+
+.Etiqueta11NegBold  {
+	font-weight:bold;
+	font-size:11px;
+    color:#000000;
+}
+
+.Etiqueta11RojBold  {
+	font-weight:bold;
+	font-size:11px;
+    color:#FF0000;
+}
+
+.Etiqueta11NegNormal {
+	font-weight:normal;
+	font-size:11px;
+    color:#000000;
+}
+
+.EtiquetaError11RojNormal {
+	font-weight:normal;
+	font-size:11px;
+    color:#FF0000;
+}
+
+.EtiquetaError11RojBold {
+	font-weight:bold;
+	font-size:11px;
+    color:#FF0000;
+}
+
+
+.EtiquetaDomicilio10std {
+	font-weight:Bold;
+	font-size:11px;
+    color:#FF0000;
+}
+
+.EtiquetaDomicilio10pre {
+	font-weight:bold;
+	font-size:11px;
+    color:#666699;
+}
+
+HR {font-family:arial,helvetica;}  
+.HRPremier { 
+   color:#666699;
+   background: #FFFFFF;    
+   size:3;
+}
+
+.HRStandard { 
+   color:#FF0000;
+   background: #FFFFFF;    
+   size:3;   
+}
+
+IFRAME  {font-family:arial,helvetica;}  
+.FrameBeneficiarios { 
+  margin: 0 0 0 0;
+  overflow-x: scroll; 
+  overflow-y: hidden; 
+} 
+
+esf-formprocessing:text {font-family:arial,helvetica;}
+.Input10NegBold {
+	font-weight:bold;
+	font-size:11px;
+    color:#000000;
+   background: #FFFFFF;    
+}
+
+.Input10NegNormal {
+	font-weight:normal;
+	font-size:11px;
+    color:#000000;
+   background: #FFFFFF;    
+}
+
+esf-formprocessing:textfield {font-family:arial,helvetica;}
+.Input10NegNormal {
+	font-weight:normal;
+	font-size:11px;
+    color:#000000;
+   background: #FFFFFF;    
+}
+
+esf-formprocessing:radio {font-family:arial,helvetica;}
+.Radio10NegNormal {
+	font-weight:normal;
+	font-size:11px;
+    color:#000000;
+}
+
+esf-formprocessing:select {font-family:arial,helvetica;}
+.Select10NegNormal {
+	font-weight:normal;
+	font-size:11px;
+    color:#000000;
+    background: #FFFFFF;
+}
+
+esf-errormessage:message  {font-family:arial,helvetica;}
+.alertaroja12 {
+	font-weight:normal;
+	font-size:11px;
+    color:#FF0000;
+}
+
+marquee {font-family:arial,helvetica;}
+.marqueRoj16Bold {
+	font-weight:bold;
+	font-size:16px;
+    color:#FF0000;
+}
+
+.marqueRoj15Bold {
+	font-weight:bold;
+	font-size:15px;
+    color:#FF0000;
+}
+
+TD.BeneTit {
+	background-color: red;
+	font-weight: bold;
+	font-size: 11px;
+	color: white;
+}
+
+.GrayBg {
+	font-weight:normal;
+	font-size:10px;
+    color:black;
+	background: #EDEDEC;
+	border: none;
+}
+
+div.over {
+	overflow: auto;
+	width: 480px;
+}
+
+.inputfield {
+	font-weight: normal;
+	font-size:10px;
+	color: black;
+	background: #F7F7F9;
+	border: inset;
+	border-style: #E6E6E6;
+	border-width: 1px;
+}
+
+.labelfield {
+	font-weight: normal;
+	font-size:11px;
+	color: black;
+	background: #F7F7F9;
+}
+.msgRed {
+	font-weight: bold;
+	font-size:11px;
+	color: red;
+	padding-left: 25px;
+}
+
+.msgErr{
+	font-weight: bold;
+	font-size:10px;
+	color: red;
+}
+
+span.obliga {
+	font-weight: bold;
+	font-size:11px;
+	color: red;
+	text-align: center;
+}
+
+a {
+	font-weight: bold;
+	font-size: 10px;
+	color: black;
+	background: #FFFFFF;
+	text-decoration: none;
+}
+
+a:hover {
+	font-weight: bold;
+	font-size: 10px;
+	color: red;
+	background: #FFFFFF;
+	text-decoration: underline;
+}
+
+a:visited:after {
+	font-weight: bold;
+	font-size: 10px;
+	color: red;
+	background: #FFFFFF;
+	text-decoration: none;
+}
+
+#layerWait {
+	visibility:hidden;
+	position:absolute;
+	left:157px;
+	top:200px;
+	padding:0px;
+	z-index:3;
+}
+
+#layerWaitB {
+	visibility:hidden;
+	position:absolute;
+	left:0px;
+	top:200px;
+	padding:0px;
+	z-index:3;
+}
+
+#main {
+	visibility:visible;
+	z-index:1;
+}
+.Tip {
+	font-weight:bold;
+	font-size:11px;
+    color:#999999;
+    margin: 2 0 0 2;
+}
+
+.Help {
+	font-weight:normal;
+	font-size:10px;
+    color:#999999;
+    margin: 2 0 0 2;
+}
+
+.TituloPagina {
+    font-family: arial;
+    font-weight: bold;
+    font-size: 12px;
+    color: #000000;
+    text-align: left;
+}
+
+.scrollDiv {
+	height: 165px;
+	width: 779px;
+	overflow: auto;
+}
+
+.scrollDiv2 {
+	height: 265px;
+	width: 779px;
+	overflow: auto;
+}
+
+.TitBusquedaCotBold {
+	font-weight: bold;
+	font-size:11px;
+    color:#ffffff;
+	text-align:center;
+
+    padding-bottom:1px;
+    padding-top:6px;
+    background: rgba(212,228,239,1);
+    background: -moz-linear-gradient(top, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
+    background: -webkit-linear-gradient(top, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: -o-linear-gradient(top, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: -ms-linear-gradient(top, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    background: linear-gradient(to bottom, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=0 );
+}

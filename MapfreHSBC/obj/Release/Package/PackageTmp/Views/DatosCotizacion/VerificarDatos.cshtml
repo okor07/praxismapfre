@@ -1,0 +1,119 @@
+﻿@model MapfreHSBC.Models.Cotizacion.DatosContratante.Datos
+
+@{
+    Layout = "~/Views/Shared/_Master.cshtml";
+    ViewBag.Title = "Verificación de datos";
+}
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Verificación de datos</title>
+</head>
+<body>
+    <div> 
+@using (Html.BeginForm("VerificacionDatos", "DatosCotizacion", FormMethod.Post,
+                                      new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+        <table style="width:100%!important;">
+            <tr>
+                <td colspan="2">
+                    <div class="TitCotiza11BlaBold" style="width:100%!important;">Datos del Contratante y/o Asegurado</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="BOLD" style="width:35%;">Tipo de Persona:</td>
+                <td>@Html.Label((Model.tipoPersona == 'F') ? "Fisica" : "Moral")</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Nombre:</td>
+                <td>@Html.Label(Model.nombreContratante)</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Apellido Materno:</td>
+                <td>@Html.Label(Model.apellidoPaternoContrante)</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Apellido Paterno:</td>
+                <td>@Html.Label(Model.apellidoMaternoContrante)</td>
+            </tr>
+            <td colspan="2">
+                <div class="TitCotiza11BlaBold" style="width:100%!important;">Caracteristicas del producto</div>
+            </td>
+            <tr>
+                <td class="BOLD">Perfil:</td>
+                <td>@ViewBag.CompC.perfil</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Modalidad:</td>
+                <td>@ViewBag.CompC.modalidad</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Moneda:</td>
+                <td>@ViewBag.CompC.moneda</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Plazo:</td>
+                <td>@ViewBag.CompC.plazo</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Coberturas:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="BOLD">Prima Inicial:</td>
+                <td>@ViewBag.CompC.primaInicial</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Aportacines Periodicas:</td>
+                <td>@ViewBag.CompC.aportacionesPeriodicas</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Periodicidad:</td>
+                <td>@ViewBag.CompC.periodicidad</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Forma de Pago:</td>
+                <td>@ViewBag.CompC.formaDePago</td>
+            </tr>
+            <tr>
+                <td class="BOLD">Fondo 1:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="BOLD">Fondo 2:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="BOLD">Fondo 3:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="BOLD">Precio del Seguro</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="BOLD">Derecho de Póliza:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="BOLD">Prima Total:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <br />
+                    <br />
+                    <br />
+                    <input id="btnContinuar" type="button" value="CONTINUAR VENTA" class="btnAction" />
+                </td>
+            </tr>
+        </table>
+}
+</div>
+</body>
+</html>

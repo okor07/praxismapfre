@@ -1,0 +1,271 @@
+﻿@model MapfreHSBC.Models.Cotizacion.ConsultasCotizaciones
+
+@{
+    Layout = null;
+    ViewBag.Title = "ConsultaCotizaciones";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="~/Content/General/estilo.css" />
+    <link rel="stylesheet" href="~/Content/General/question.css" />
+    <link rel="stylesheet" href="~/Content/kendo/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/styles/kendo.default.mobile.min.css" />
+
+    <script src="~/Content/kendo/js/jquery.min.js"></script>
+    <script src="~/Content/kendo/js/kendo.all.min.js"></script>
+</head>
+    <body style="width:750px!important">
+
+        <table style="width:100%!important;">
+            <tr>
+                <td align="right" style="text-align:right">
+                    <img src='~/img/Inversion-Retiro.jpg' width="150" />
+                </td>
+            </tr>
+        </table>
+
+        <table style="width:100%!important;">
+            <tr>
+                <td colspan="4" style="vertical-align:top" align="right">
+                    <table style="width:100%!important;">
+                        <tr>
+                            <td style="width:50%"></td>
+                            <td style="width: 50%; text-align: left; border-top-right-radius: 10px" colspan="2" class="Titulos">1.- Seleccione el Producto a cotizar</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><br /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="BOLD">Producto:<span class="Txt_aviso"></span></td>
+                            <td >
+                                <input id="paquetes" style="width: 100%;" />
+                            </td>                        
+                        </tr>
+                        <tr>
+                            <td><br /></td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%"></td>
+                            <td style="width:50%; text-align:left" colspan="2" class="Titulos">2.- Datos de busqueda, introduce uno o mas datos para buscar</td>
+                        </tr>
+                        <tr>
+                            <td><br /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="BOLDTEXT">No. de cotizacion:<span class="Txt_aviso"></span></td>
+                            <td width="25%" align="left">
+                                <input type="text" id="noCotizacion" name="noCotizacion"
+                                        @*onkeypress='return event.charCode >= 48 && event.charCode <= 57'*@
+                                        value="0" class="form-control" placeholder="No de Cotización" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><br /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <td class="BOLDTEXT">Correo Electronico:<span class="Txt_aviso"></span></td>
+                            <td width="25%" align="left">
+                                <input type="text" id="correoElectronico" name="correoElectronico" class="form-control" placeholder="Correo Electronico" />
+                            </td>                        
+                        </tr>
+                        <tr>
+                            <td><br /></td>
+                        </tr>
+
+                        <tr>
+                            <td style="width:50%"></td>
+                            <td style="width: 50%; text-align: left; border-bottom-right-radius: 10px" height="15px" colspan="2" class="Titulos"></td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <center>
+            <table>
+                <tr>
+                    <td style="width:70%"></td>
+                    <td style="width:50%">
+                        @*<input id="btnBuscar" type="button" value="BUSCAR" class="btnBuscar redondo">*@
+                        <input id="btnBuscar" type=image src="~/img/buscar.jpg" width="87px" height="43px">
+                        
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <span id="staticNotification"></span>
+        <div id="appendto" class="demo-section k-content"></div>
+
+        <br />
+        <br />
+        <br />
+
+        <div id="consultaCotizaciones" style="display:none;width:100%">
+            <div class="Titulos" style="width:100%!important;"></div>
+            <div id="gridConsulta"></div>
+        </div>
+
+            <br />
+            <br />
+            <script>
+    $(document).ready(function () {
+
+        $("#paquetes").kendoComboBox({
+            placeholder: "Selecciona un Paquete",
+            filter: "startswith",
+            dataTextField: "etiqueta",
+            dataValueField: "valor",
+            dataSource: {
+                transport: {
+                    read: {
+
+                        url: "../api/rest/services/modalidades",
+                    }
+                }
+            },
+        });
+    })
+
+    $("#btnBuscar").click(function () {
+
+        var staticNotification = $("#staticNotification").kendoNotification({
+            appendTo: "#appendto"
+        }).data("kendoNotification");
+
+        if (paquetes.value == null || paquetes.value == "") {
+            staticNotification.show("Falta Seleccionar un Paquete");
+            return;
+        }
+        //Si se ingresa no Cotizacion, abre el detalle
+        if (noCotizacion.value != null && parseInt(noCotizacion.value) > 0) {
+            var loc = window.location;
+            var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/'));
+
+            var ruta = pathName.substring(0, pathName.lastIndexOf('/'));
+
+            var url = ruta + "/Cotizar/Index?numCotizacion=" + noCotizacion.value + "&modalidad=" + paquetes.value;
+
+            if( @ViewBag.idListaCotizacion !== '0' &&  @ViewBag.idListaCotizacion !== null)
+                    url = url + "&idListaCotizacion=" + @ViewBag.idListaCotizacion;
+            //$(location).attr('href', url);
+            $(window).attr('location', url);
+            return;
+        }
+
+        if ((noCotizacion.value == null || noCotizacion.value == "") && (correoElectronico.value == null || correoElectronico.value == "")) {
+            staticNotification.show("Favor de Ingresar un dato de Busqueda");
+            //noCotizacion.value = 0;
+            return;
+        }
+
+        $.ajax({
+            success: function (result) {
+                resultado = result;
+
+                if (noCotizacion.value == null || noCotizacion.value == "") {
+                    noCotizacion.value = "0";
+                }
+
+                jQuery('#consultaCotizaciones').show();
+                dataSource = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: "../api/rest/services/cotizaciones?idCotizacion=" + noCotizacion.value
+                            + "&cod_modalidad=" + paquetes.value + "&email=" + correoElectronico.value
+                        }
+                    },
+                    selectable: true,
+                    batch: true,
+                    navigatable: true,
+                    pageable: true,
+                    pageSize: 10,
+                    schema: {
+                        model: {
+                            id: "idCotizacion",
+                            fields: {
+                                idCotizacion: { editable: false, nullable: true },
+                                fecCotizacion: { validation: { required: false } },
+                                fecNacimiento: { validation: { required: false } },
+                                montoAportacionAd: { validation: { required: false } },
+                                perAportacionAd: { validation: { required: false } }
+                            }
+                        }
+                    }
+                });
+
+                $("#gridConsulta").kendoGrid({
+                    dataSource: dataSource,
+                    pageable: {
+                        refresh: true,
+                        pageSizes: true,
+                        buttonCount: 5
+                    },
+                    columns: [{
+                        field: "idCotizacion",
+                        title: "ID Cotización",
+                        width: 100
+                    }, {
+                        field: "fecCotizacion",
+                        title: "Fecha de Cotización"
+
+                    }, {
+                        field: "fecNacimiento",
+                        title: "Fecha de Nacimiento"
+                    }, {
+                        field: "montoAportacionAd",
+                        title: "Prima Inicial"
+
+                    },
+                    {
+                        field: "perAportacionAd",
+                        title: "Periodicidad de la aportación adicional"
+                    },
+                    {
+                        title: "Detalle",
+                        command: [
+                            {
+                                name: "Ver",
+                                click: function (e) {
+                                    e.preventDefault();
+                                    var tr = $(e.target).closest("tr");
+                                    var data = this.dataItem(tr);
+
+                                    var loc = window.location;
+                                    var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/'));
+
+                                    var ruta = pathName.substring(0, pathName.lastIndexOf('/'));
+
+                                    var url = ruta + "/Cotizar/Index?numCotizacion=" + data.idCotizacion + "&modalidad=" + paquetes.value @*+ "&idListaCotizacion=" + @ViewBag.idListaCotizacion*@;
+                                    if( @ViewBag.idListaCotizacion !== '0' &&  @ViewBag.idListaCotizacion !== null)
+                                        url = url + "&idListaCotizacion=" + @ViewBag.idListaCotizacion;
+                                    //$(location).attr('href', url);
+                                    $(window).attr('location', url);
+                                    // jQuery(window).attr('location', url);
+                                    console.log("Modificar ID Cotizacion: " + data.idCotizacion);
+                                }
+                            }
+                        ], width: 80
+                    }
+                    ]
+                });
+                var grid = $('#gridConsulta').data("kendoGrid");
+            }
+        });
+    });
+            </script>
+</body>
+</html>
+
+
+

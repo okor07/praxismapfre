@@ -1,0 +1,45 @@
+﻿@model MapfreHSBC.Models.Cotizacion.ConsultaCotizacion.Datos
+@{
+    Layout = "~/Views/Shared/_Master.cshtml";
+    ViewBag.Title = "Consulta de Cotizaciones";
+}
+
+<style>
+    select {
+        width:250px!important;
+    }
+</style>
+
+@using (Html.BeginForm("ResultadoCotizaciones", "DatosCotizacion", Model, FormMethod.Post,
+                                      new { enctype = "multipart/form-data" }))
+    {
+    @Html.ValidationSummary(true)
+<div style="width:100%;" align="right">
+    <div style="width:60%">
+        <table style="width:100%;">
+            <tr>
+                <td colspan = "2" class="TitCotiza11BlaBold">1.- Seleccione el producto a cotizar</td>
+            </tr>
+            <tr>
+                <td colspan = "2" style="padding:10px 5px 10px 5px;">@Html.DropDownListFor(model => model.producto, new SelectList(ViewBag.Producto, "Value", "Text"))</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="TitCotiza11BlaBold">2.- Datos de busqueda, introduce uno o mas datos para buscar</td>
+            </tr>
+            <tr>
+                <td class="BOLD" style="padding:7px 5px 7px 5px; width:30%;">No de Cotización:</td>
+                <td style="padding:7px 5px 7px 5px;">@Html.TextBoxFor(model => model.noCotizacion)</td>
+            </tr>
+            <tr>
+                <td class="BOLD" style="padding:7px 5px 7px 5px;">Correo electrónico:</td>
+                <td style="padding:7px 5px 7px 5px;">@Html.TextBoxFor(model => model.correoElectroinico)</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center; padding:10px 5px 10px 5px;">
+                    <input id="btnBuscar" type="submit" value="BUSCAR" class="btnAction" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+}

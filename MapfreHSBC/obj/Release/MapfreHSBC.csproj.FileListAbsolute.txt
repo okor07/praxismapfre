@@ -1,0 +1,5 @@
+C:\Users\Daniel\Desktop\JAPB\HSBC\MapfreHSBC\Code\MapfreHSBC\MapfreHSBC\bin\MapfreHSBC.dll.config
+C:\Users\Daniel\Desktop\JAPB\HSBC\MapfreHSBC\Code\MapfreHSBC\MapfreHSBC\bin\MapfreHSBC.dll
+C:\Users\Daniel\Desktop\JAPB\HSBC\MapfreHSBC\Code\MapfreHSBC\MapfreHSBC\bin\MapfreHSBC.pdb
+C:\Users\Daniel\Desktop\JAPB\HSBC\MapfreHSBC\Code\MapfreHSBC\MapfreHSBC\obj\Release\MapfreHSBC.dll
+C:\Users\Daniel\Desktop\JAPB\HSBC\MapfreHSBC\Code\MapfreHSBC\MapfreHSBC\obj\Release\MapfreHSBC.pdb
