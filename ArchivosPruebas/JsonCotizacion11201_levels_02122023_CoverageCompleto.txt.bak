@@ -1,0 +1,289 @@
+{
+    "policyData": {
+        "agentCode": "99998",
+        "commCuadroCode": "81",
+        "documCode": "HELE750101",
+        "paymentMethodCode": "1",
+        "branchCode": "112",
+        "policyEffectiveDate": "05/12/2023",
+        "policyEndDate": "05/12/2067",
+        "prorationMark": "S",
+        "contractNumber": "11228",
+        "groupPolicyNumber": "1ULMIFEL",
+        "durationType": "2",
+        "managerType": "AG"
+    },
+    "variableData": [
+        {
+            "riskNumber": "0",
+            "levelType": "1",
+            "fields": [
+                {
+                    "fieldCode": "ID_PROMOTOR",
+                    "fieldValue": "99998"
+                },
+                {
+                    "fieldCode": "TIPO_SEGURO",
+                    "fieldValue": "P"
+                },
+                {
+                    "fieldCode": "TIP_COMISION",
+                    "fieldValue": "1"
+                },
+                {
+                    "fieldCode": "TIP_IMPRESION",
+                    "fieldValue": "N"
+                },
+                {
+                    "fieldCode": "TIP_DEDUCIBLE",
+                    "fieldValue": "1"
+                },                
+                {
+                    "fieldCode": "VAL_FOLIO_SOLICITUD",
+                    "fieldValue": "1"
+                },
+				{
+                    "fieldCode": "ANIOS_DURACION_POLIZA",
+                    "fieldValue": "44"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "2",
+            "fields": [
+				{
+                    "fieldCode": "COD_MODALIDAD",
+                    "fieldValue": "11201"
+                },
+                {
+                    "fieldCode": "FEC_NACIMIENTO",
+                    "fieldValue": "01011996"
+                },
+				{
+                    "fieldCode": "MCA_SEXO",
+                    "fieldValue": "1"
+                },
+                {
+                    "fieldCode": "TIP_PERFIL_INV",
+                    "fieldValue": "MOD"
+                },
+                {
+                    "fieldCode": "NUM_FUNDOS",
+                    "fieldValue": "9"
+                },
+                {
+                    "fieldCode": "TIP_PRIMAS",
+                    "fieldValue": "2"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "3",
+            "fields": [
+                {
+                    "fieldCode": "DTO_AGENTE_DIR",
+                    "fieldValue": "99998"
+                }
+            ]
+        }
+
+    ],
+    "variableDataCoverage": [
+        {
+            "riskNumber": "1",
+            "levelType": "1",
+            "fields": [
+                {
+                    "fieldCode": "CODIGO_FUNDO",
+                    "fieldValue": "0159"
+                },
+                {
+                    "fieldCode": "PERCENTAGEM_FUNDO",
+                    "fieldValue": "10"
+                },
+                {
+                    "fieldCode": "TIP_PRIMA",
+                    "fieldValue": "UI"
+                },
+				{
+                    "fieldCode": "FORMA_PAGO",
+                    "fieldValue": "1"
+                },
+				{
+                    "fieldCode": "IMP_PREMIO_VIDA",
+                    "fieldValue": "500000"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "2",
+            "fields": [
+                {
+                    "fieldCode": "CODIGO_FUNDO",
+                    "fieldValue": "0158"
+                },
+                {
+                    "fieldCode": "PERCENTAGEM_FUNDO",
+                    "fieldValue": "10"
+                },
+				{
+                    "fieldCode": "TIP_PRIMA",
+                    "fieldValue": "AD"
+                },
+				{
+                    "fieldCode": "FORMA_PAGO_AD",
+                    "fieldValue": "4"
+                },
+				{
+                    "fieldCode": "IMP_PREMIO_VIDA_AD",
+                    "fieldValue": "500000"
+                },
+				{
+                    "fieldCode": "FEC_EFEC_PRIMA_ADI",
+                    "fieldValue": "05122025"
+                },
+				{
+                    "fieldCode": "FEC_EFEC_PRIMA_AD",
+                    "fieldValue": "05122025"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "3",
+            "fields": [
+                {
+                    "fieldCode": "CODIGO_FUNDO",
+                    "fieldValue": "0101"
+                },
+				{
+                    "fieldCode": "PERCENTAGEM_FUNDO",
+                    "fieldValue": "10"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "4",
+            "fields": [
+                {
+                    "fieldCode": "CODIGO_FUNDO",
+                    "fieldValue": "0103"
+                },
+				{
+                    "fieldCode": "PERCENTAGEM_FUNDO",
+                    "fieldValue": "10"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "5",
+            "fields": [
+                {
+                    "fieldCode": "CODIGO_FUNDO",
+                    "fieldValue": "0104"
+                },
+				{
+                    "fieldCode": "PERCENTAGEM_FUNDO",
+                    "fieldValue": "10"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "6",
+            "fields": [
+                {
+                    "fieldCode": "CODIGO_FUNDO",
+                    "fieldValue": "0105"
+                },
+				{
+                    "fieldCode": "PERCENTAGEM_FUNDO",
+                    "fieldValue": "10"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "7",
+            "fields": [
+                {
+                    "fieldCode": "CODIGO_FUNDO",
+                    "fieldValue": "0106"
+                },
+				{
+                    "fieldCode": "PERCENTAGEM_FUNDO",
+                    "fieldValue": "10"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "8",
+            "fields": [
+                {
+                    "fieldCode": "CODIGO_FUNDO",
+                    "fieldValue": "0146"
+                },
+				{
+                    "fieldCode": "PERCENTAGEM_FUNDO",
+                    "fieldValue": "10"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "9",
+            "fields": [
+                {
+                    "fieldCode": "CODIGO_FUNDO",
+                    "fieldValue": "0109"
+                },
+				{
+                    "fieldCode": "PERCENTAGEM_FUNDO",
+                    "fieldValue": "20"
+                }
+            ]
+        }
+    ],
+    "coverage": [
+        {
+            "coverageCode": "1000",
+            "sumInsuredAmn": "0.20"
+        },
+        {
+            "coverageCode": "1004",
+            "sumInsuredAmn": "0.00"
+        }
+    ],
+    "insuredData": {
+        "contractingFistName": "HECTOR",
+        "contractingMiddleName": "HERNANDEZ",
+        "contractingLastName": "LOPEZ",
+        "documCode": "HELE750101",
+        "maritalStatusCode": "S",
+        "stateCode": "9",
+        "nationalityCode": "MEX",
+        "occupationCode": "4",
+        "countryCode": "MEX",
+        "postalCode": "54700",
+        "professionCode": "32",
+        "provinceCode": "9001",
+        "curp": "HELE750101HMCMMC01",
+        "realAge": "46",
+        "email": "hec@mail.com",
+        "dateBirth": "01/01/1975",
+        "personType": "S",
+        "gender": "1",
+        "addressName1": "CALLE TEST",
+        "addressName2": "189",
+        "addressName3": "COLONIA TEST",
+        "insuredObservations": "1.75,60,25",
+        "beneficiaryType": "2",
+        "telephoneNumber": "5558711111"
+}
+}
