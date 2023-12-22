@@ -1,0 +1,133 @@
+{
+    "policyData": {
+        "agentCode": "6096",
+        "commCuadroCode": "81",
+        "documCode": "HELE750101",
+        "paymentMethodCode": "1",
+        "branchCode": "112",
+        "policyEffectiveDate": "05/12/2023",
+        "policyEndDate": "05/12/2025",
+        "prorationMark": "S",
+        "contractNumber": "11228",
+        "groupPolicyNumber": "1ULMIFEL",
+        "durationType": "2",
+        "managerType": "AG"
+    },
+    "variableData": [
+        {
+            "riskNumber": "0",
+            "levelType": "1",
+            "fields": [
+                {
+                    "fieldCode": "ID_PROMOTOR",
+                    "fieldValue": "6096"
+                },
+                {
+                    "fieldCode": "TIPO_SEGURO",
+                    "fieldValue": "P"
+                },
+                {
+                    "fieldCode": "TIP_COMISION",
+                    "fieldValue": "1"
+                },
+                {
+                    "fieldCode": "TIP_IMPRESION",
+                    "fieldValue": "N"
+                },
+                {
+                    "fieldCode": "TIP_DEDUCIBLE",
+                    "fieldValue": "1"
+                },                
+                {
+                    "fieldCode": "VAL_FOLIO_SOLICITUD",
+                    "fieldValue": "1"
+                },
+				{
+                    "fieldCode": "ANIOS_DURACION_POLIZA",
+                    "fieldValue": "2"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "2",
+            "fields": [
+				{
+                    "fieldCode": "COD_MODALIDAD",
+                    "fieldValue": "11204"
+                },
+                {
+                    "fieldCode": "FEC_NACIMIENTO",
+                    "fieldValue": "01011996"
+                },
+				{
+                    "fieldCode": "MCA_SEXO",
+                    "fieldValue": "1"
+                },
+                {
+                    "fieldCode": "TIP_PERFIL_INV",
+                    "fieldValue": "MOD"
+                },
+                {
+                    "fieldCode": "NUM_FUNDOS",
+                    "fieldValue": "3"
+                },
+                {
+                    "fieldCode": "TIP_PRIMAS",
+                    "fieldValue": "2"
+                },
+                {
+                    "fieldCode": "PRIMA_COB_1000",
+                    "fieldValue": "1013.00"
+                }
+            ]
+        },
+        {
+            "riskNumber": "1",
+            "levelType": "3",
+            "fields": [
+                {
+                    "fieldCode": "DTO_AGENTE_DIR",
+                    "fieldValue": "0"
+                }
+            ]
+        }
+
+    ],
+    "coverage": [
+        {
+            "coverageCode": "1000",
+            "sumInsuredAmn": "100000"
+        },
+        {
+            "coverageCode": "1095",
+            "sumInsuredAmn": "0"
+        }
+    ],
+    "insuredData": {
+        "contractingFistName": "HECTOR",
+        "contractingMiddleName": "HERNANDEZ",
+        "contractingLastName": "LOPEZ",
+        "documCode": "HELE750101",
+        "maritalStatusCode": "S",
+        "stateCode": "9",
+        "nationalityCode": "MEX",
+        "occupationCode": "4",
+        "countryCode": "MEX",
+        "postalCode": "54700",
+        "professionCode": "32",
+        "provinceCode": "9001",
+        "curp": "HELE750101HMCMMC01",
+        "realAge": "46",
+        "email": "oscsuazo@mapfre.com.mx",
+        "dateBirth": "01/01/1975",
+        "personType": "S",
+        "gender": "1",
+        "addressName1": "CALLE TEST",
+        "addressName2": "189",
+        "addressName3": "COLONIA TEST",
+        "insuredObservations": "1.75,60,25",
+        "beneficiaryType": "2",
+        "telephoneNumber": "5558711111"
+}
+}
