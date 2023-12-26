@@ -1,0 +1,35 @@
+<soapenv:Envelope xmlns:eng="urn:hpexstream-services/Engine" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Header>
+ <wsse:Security soapenv:mustUnderstand="0" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsse:UsernameToken wsu:Id="UsernameToken-1">
+       <wsse:Username>userHPExstream</wsse:Username>
+       <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">paswHPExstream</wsse:Password>
+       <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">9XbhOoet06M5XXD83sgM7Q==</wsse:Nonce>
+       <wsu:Created>2015-07-21T08:23:30.207Z</wsu:Created>
+    </wsse:UsernameToken>
+ </wsse:Security>
+</soapenv:Header>
+<soapenv:Body>
+ <eng:Compose>
+    <EWSComposeRequest>
+       <driver>
+          <!--Fichero de datos en Base64-->
+          <driver>xmlHPExstream</driver>
+          <fileName>INPUT</fileName>
+       </driver>
+       <engineOptions>
+          <name>IMPORTDIRECTORY</name>
+          <value>/var/opt/exstream/pubs</value>
+       </engineOptions>
+       <engineOptions>
+          <!--Ruta donde se encuentra fichero de referencias-->
+          <!--A su vez, el fichero contiene ruta a recursos-->
+          <name>FILEMAP</name>
+          <value>REFERENCIAS,/var/opt/exstream/pubs/_emisionSector_/REFERENCIAS.ini</value>
+       </engineOptions>
+       <!--Optional:-->
+       <pubFile>sPubFile</pubFile>
+    </EWSComposeRequest>
+ </eng:Compose>
+</soapenv:Body>
+</soapenv:Envelope>
