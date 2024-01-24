@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "0bca3b99-4cc4-4888-8bd2-217f57bb6996",
+		"name": "ContratosMiFel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/life/ul/payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": \"1000\",\r\n  \"cardCvvCode\": \"123\",\r\n  \"cardNumber\": \"1928748932174891\",\r\n  \"cardType\": \"1\",\r\n  \"currencyCode\": \"MXP\",\r\n  \"entityBank\": \"002\",\r\n  \"fullName\": \"usuario\",\r\n  \"monthDueCard\": \"december\",\r\n  \"numberOfPayments\": \"1\",\r\n  \"referencePolicyNumber\": \"12345678901234\",\r\n  \"yearDueCard\": \"2024\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/life/ul/payment",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"life",
+						"ul",
+						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/life/ul/catalogs/banks/{codRamo}/{version}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ES",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{local}}/api/life/ul/catalogs/banks/114/1",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"life",
+						"ul",
+						"catalogs",
+						"banks",
+						"114",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/life/ul/sendmail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"attachment\":[\"JVBERi0xLjQKJeLjz9MKMiAwIG9iago8PC9UeXBlL1hPYmplY3QvU3VidHlwZS9JbWFnZS9XaWR0aCAyMDAvSGVpZ2h0IDQwL0xlbmd0aCAyOC9Db2xvclNwYWNlL0RldmljZUdyYXkvQml0c1BlckNvbXBvbmVudCA4L0ZpbHRlci9GbGF0ZURlY29kZT4+c3RyZWFtCnic7cEBAQAAAICQ/GV4dCBHcm91cCBOViBcKEFHUEwtdmVyc2lvblwpKS9DcmVhdGlvbkRhdGUoRDoyMDI0MDEyNDEzMTMzNy0wNicwMCcpL01vZERhdGUoRDoyMDI0MDEyNDEzMTMzNy0wNicwMCcpPj4KZW5kb2JqCnhyZWYKMCAxMQowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDY1MDcgMDAwMDAgbiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMTk3IDAwMDAwIG4gCjAwMDAwMDY2MDAgMDAwMDAgbiAKMDAwMDAwNDQ3MiAwMDAwMCBuIAowMDAwMDA0OTMyIDAwMDAwIG4gCjAwMDAwMDY2ODggMDAwMDAgbiAKMDAwMDAwNjM0MSAwMDAwMCBuIAowMDAwMDA2NzM5IDAwMDAwIG4gCjAwMDAwMDY3ODQgMDAwMDAgbiAKdHJhaWxlcgo8PC9TaXplIDExL1Jvb3QgOSAwIFIvSW5mbyAxMCAwIFIvSUQgWzw4MDE5YWI1ODE5MjYxZTUwNmRkMWM3Yjk1NmY3N2YxMD48ODAxOWFiNTgxOTI2MWU1MDZkZDFjN2I5NTZmNzdmMTA+XT4+CiVpVGV4dC01LjUuMTMKc3RhcnR4cmVmCjY5NDMKJSVFT0YK\"],\r\n  \"recipient\": \"example@gmail.com\",\r\n  \"typeDoc\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/life/ul/sendmail",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"life",
+						"ul",
+						"sendmail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/life/ul/printHP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"documentType\": \"CRS\",\r\n  \"policy\": \"1122300000327\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/life/ul/printHP",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"life",
+						"ul",
+						"printHP"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/life/ul/print",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"emailDestino\": \"example@gmail.com\",\r\n  \"negocio\": \"nissan\",\r\n  \"nmi\": 1,\r\n  \"numEndoso\": 0,\r\n  \"numPoliza\": 1082100000099\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/life/ul/print",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"life",
+						"ul",
+						"print"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/life/ul/issue",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"policyData\": {\r\n        \"agentCode\": \"99998\",\r\n        \"commCuadroCode\": \"81\",\r\n        \"documCode\": \"HELE750101\",\r\n        \"paymentMethodCode\": \"1\",\r\n        \"branchCode\": \"112\",\r\n        \"policyEffectiveDate\": \"05/12/2023\",\r\n        \"policyEndDate\": \"05/12/2025\",\r\n        \"prorationMark\": \"S\",\r\n        \"contractNumber\": \"11228\",\r\n        \"groupPolicyNumber\": \"1ULMIFEL\",\r\n        \"durationType\": \"2\",\r\n        \"managerType\": \"AG\"\r\n    },\r\n    \"variableData\": [\r\n        {\r\n            \"riskNumber\": \"0\",\r\n            \"levelType\": \"1\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"ID_PROMOTOR\",\r\n                    \"fieldValue\": \"99998\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"TIPO_SEGURO\",\r\n                    \"fieldValue\": \"P\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"TIP_COMISION\",\r\n                    \"fieldValue\": \"1\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"TIP_IMPRESION\",\r\n                    \"fieldValue\": \"N\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"TIP_DEDUCIBLE\",\r\n                    \"fieldValue\": \"1\"\r\n                },                \r\n                {\r\n                    \"fieldCode\": \"VAL_FOLIO_SOLICITUD\",\r\n                    \"fieldValue\": \"1\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"ANIOS_DURACION_POLIZA\",\r\n                    \"fieldValue\": \"6\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"2\",\r\n            \"fields\": [\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"COD_MODALIDAD\",\r\n                    \"fieldValue\": \"11204\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"FEC_NACIMIENTO\",\r\n                    \"fieldValue\": \"01011996\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"MCA_SEXO\",\r\n                    \"fieldValue\": \"1\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"TIP_PERFIL_INV\",\r\n                    \"fieldValue\": \"MOD\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"NUM_FUNDOS\",\r\n                    \"fieldValue\": \"3\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"TIP_PRIMAS\",\r\n                    \"fieldValue\": \"2\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"PRIMA_COB_1000\",\r\n                    \"fieldValue\": \"1013.00\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"3\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"DTO_AGENTE_DIR\",\r\n                    \"fieldValue\": \"99998\"\r\n                }\r\n            ]\r\n        }\r\n\r\n    ],\r\n    \"variableDataCoverage\": [\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"1\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"CODIGO_FUNDO\",\r\n                    \"fieldValue\": \"0024\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"PERCENTAGEM_FUNDO\",\r\n                    \"fieldValue\": \"25\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"TIP_PRIMA\",\r\n                    \"fieldValue\": \"UI\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"FORMA_PAGO\",\r\n                    \"fieldValue\": \"1\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"IMP_PREMIO_VIDA\",\r\n                    \"fieldValue\": \"100000\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"2\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"CODIGO_FUNDO\",\r\n                    \"fieldValue\": \"0025\"\r\n                },\r\n                {\r\n                    \"fieldCode\": \"PERCENTAGEM_FUNDO\",\r\n                    \"fieldValue\": \"25\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"TIP_PRIMA\",\r\n                    \"fieldValue\": \"AD\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"FORMA_PAGO_AD\",\r\n                    \"fieldValue\": \"4\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"IMP_PREMIO_VIDA_AD\",\r\n                    \"fieldValue\": \"100000\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"FEC_EFEC_PRIMA_ADI\",\r\n                    \"fieldValue\": \"5\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"FEC_EFEC_PRIMA_AD\",\r\n                    \"fieldValue\": \"05122024\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"3\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"CODIGO_FUNDO\",\r\n                    \"fieldValue\": \"0026\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"PERCENTAGEM_FUNDO\",\r\n                    \"fieldValue\": \"50\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"4\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"CODIGO_FUNDO\",\r\n                    \"fieldValue\": \"0103\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"PERCENTAGEM_FUNDO\",\r\n                    \"fieldValue\": \"10\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"5\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"CODIGO_FUNDO\",\r\n                    \"fieldValue\": \"0104\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"PERCENTAGEM_FUNDO\",\r\n                    \"fieldValue\": \"10\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"6\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"CODIGO_FUNDO\",\r\n                    \"fieldValue\": \"0105\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"PERCENTAGEM_FUNDO\",\r\n                    \"fieldValue\": \"10\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"7\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"CODIGO_FUNDO\",\r\n                    \"fieldValue\": \"0106\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"PERCENTAGEM_FUNDO\",\r\n                    \"fieldValue\": \"10\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"8\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"CODIGO_FUNDO\",\r\n                    \"fieldValue\": \"0146\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"PERCENTAGEM_FUNDO\",\r\n                    \"fieldValue\": \"10\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"riskNumber\": \"1\",\r\n            \"levelType\": \"9\",\r\n            \"fields\": [\r\n                {\r\n                    \"fieldCode\": \"CODIGO_FUNDO\",\r\n                    \"fieldValue\": \"0109\"\r\n                },\r\n\t\t\t\t{\r\n                    \"fieldCode\": \"PERCENTAGEM_FUNDO\",\r\n                    \"fieldValue\": \"20\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"coverage\": [\r\n        {\r\n            \"coverageCode\": \"1000\",\r\n            \"sumInsuredAmn\": \"100000\"\r\n        },\r\n        {\r\n            \"coverageCode\": \"1095\",\r\n            \"sumInsuredAmn\": \"0\"\r\n        }\r\n    ],\r\n    \"beneficiary\": [\r\n        {\r\n            \"personType\": \"N\",\r\n            \"dateBirth\": \"01/01/1975\",\r\n\t\t\t\"realAge\": \"35\",\r\n            \"contractingFistName\": \"Benef\",\r\n\t\t\t\"contractingMiddleName\": \"MidBenef\",\r\n            \"contractingLastName\": \"LastBenef\",\r\n\t\t\t\"relationshipCode\": \"1\",\r\n            \"occupationCode\": \"A\",\r\n\t\t\t\"percentageParticipation\": \"100\",\r\n            \"beneficiaryType\": \"6\",\r\n\t\t\t\"sequenceNumber\": \"1\"            \r\n        }\r\n    ],\r\n    \"contractorData\": {\r\n        \"contractingFistName\": \"ERNESTO\",\r\n        \"contractingMiddleName\": \"HERNANDEZ\",\r\n        \"contractingLastName\": \"LOPEZ\",\r\n        \"documCode\": \"HELE750101\",\r\n        \"maritalStatusCode\": \"S\",\r\n        \"stateCode\": \"9\",\r\n        \"nationalityCode\": \"MEX\",\r\n        \"occupationCode\": \"39\",\r\n        \"countryCode\": \"MEX\",\r\n        \"postalCode\": \"54700\",\r\n        \"professionCode\": \"32\",\r\n        \"provinceCode\": \"9001\",\r\n        \"curp\": \"HELE750101HMCMMC01\",\r\n        \"realAge\": \"46\",\r\n        \"email\": \"hec@mail.com\",\r\n        \"dateBirth\": \"01/01/1975\",\r\n        \"personType\": \"S\",\r\n        \"gender\": \"1\",\r\n        \"addressName1\": \"CALLE TEST\",\r\n        \"addressName2\": \"189\",\r\n        \"addressName3\": \"COLONIA TEST\",\r\n        \"insuredObservations\": \"1.75,60,25\",\r\n        \"beneficiaryType\": \"2\",\r\n        \"telephoneNumber\": \"5558711111\"\r\n    },\r\n    \"insuredData\": {\r\n        \"contractingFistName\": \"HECTOR\",\r\n        \"contractingMiddleName\": \"HERNANDEZ\",\r\n        \"contractingLastName\": \"LOPEZ\",\r\n        \"documCode\": \"HELE750101\",\r\n        \"maritalStatusCode\": \"S\",\r\n        \"stateCode\": \"9\",\r\n        \"nationalityCode\": \"MEX\",\r\n        \"occupationCode\": \"4\",\r\n        \"countryCode\": \"MEX\",\r\n        \"postalCode\": \"54700\",\r\n        \"professionCode\": \"32\",\r\n        \"provinceCode\": \"9001\",\r\n        \"curp\": \"HELE750101HMCMMC01\",\r\n        \"realAge\": \"46\",\r\n        \"email\": \"hec@mail.com\",\r\n        \"dateBirth\": \"01/01/1975\",\r\n        \"personType\": \"S\",\r\n        \"gender\": \"1\",\r\n        \"addressName1\": \"CALLE TEST\",\r\n        \"addressName2\": \"189\",\r\n        \"addressName3\": \"COLONIA TEST\",\r\n        \"insuredObservations\": \"1.75,60,25\",\r\n        \"beneficiaryType\": \"2\",\r\n        \"telephoneNumber\": \"5558711111\"\r\n}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/api/life/ul/issue",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"life",
+						"ul",
+						"issue"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://localhost:8341",
+			"type": "default"
+		}
+	]
+}
