@@ -1,0 +1,1 @@
+{"0104":{"id":"0104","fund":"Actigob","profile":"Conservador1"},"0111":{"id":"0111","fund":"ActiMed","profile":"Conservador2"},"8888":{"id":"8888","fund":"Everest","profile":"Moderado"},"0105":{"id":"0105","fund":"MAYA","profile":"Decidido1"},"0101":{"id":"0101","fund":"ACTI500","profile":"Decidido2"}}
