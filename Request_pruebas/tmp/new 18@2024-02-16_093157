@@ -1,0 +1,73 @@
+10.184.60.16
+USRWEB10	
+web
+
+usrweb47
+srwe4007
+
+
+[cod_cia = " + cia + "][cod_ramo = " + ramo + "][dvcod_modalidad = " + mod + "][num_contrato = " + contrato + "][dvtip_perfil_inv  = '" + perfil + "'" + "][cod_mon = " + moneda + "]";
+[cod_cia = 1][cod_ramo = 112][dvcod_modalidad = 11204][[num_contrato = 99999][dvtip_perfil_inv  = 1][cod_mon =1 ]
+
+taskkill /F /PID pidnumber
+------
+
+var cia = "1";
+var ramo = document.getElementById("hidRamo").value;
+var mod = document.getElementById("hdnmodalidad").value;
+var contrato = selIndex("drpContrato");
+comboFill = 'ddlPeriodosP';
+valFill = 'COD_FRACC_PAGO';
+txtFill = 'NOM_FRACC_PAGO';
+var parametros = "[cod_cia = " + cia + "][fec_efec_poliza = " + document.getElementById("hidFechahoy").value + "][cod_ramo = " + ramo + "][dvcod_modalidad = " + mod + "]";
+Datos.getPeriodicidadP(cia, ramo, mod, parametros, llenaCombo_CallBack);
+
+
+[cod_cia = 1][fec_efec_poliza = 21/02/2024][cod_ramo = 112][dvcod_modalidad = 11204]
+
+
+2	SEMESTRAL
+3	TRIMESTRAL
+4	MENSUAL
+10	ANUAL MULTIANUAL
+
+
+No se pudo realizar la Emisión de su Póliza, faltan datos: 1120344285041ORA-20003: PO OBLIGATORIO <TIP_PRIMAS>
+
+----
+
+   comboFill = 'ddlPerfil';
+        valFill = 'COD_PERFIL';
+        txtFill = 'NOM_PERFIL';
+        var parametros = "[cod_cia = " + cia + "][fec_efec_poliza = '" + document.getElementById("hidFechahoy").value + "'" + "][cod_ramo = " + ramo + "][dvcod_modalidad = " + mod + "][num_contrato = " + contrato + "]";
+        Datos.getPerfilesUL(cia, ramo, mod, parametros, llenaCombo_CallBack);
+		
+		
+[cod_cia = 1][fec_efec_poliza = '23/02/2024'][cod_ramo = 112][dvcod_modalidad = 11204][num_contrato = 99999]
+
+
+-----
+
+select EM_K_GEN_WS.GETLOV(1,112,'1','TA899039',3,'[cod_cia = 1][cod_ramo = 112][dvcod_modalidad = 11204][[num_contrato = 99999][dvtip_perfil_inv  = 1][cod_mon = 1]') from dual;
+
+select EM_K_GEN_WS.GETLOV(1,112,'1','TA899039',3,'[cod_cia = 1][fec_efec_poliza = ''23/02/2024''][cod_ramo = 112][dvcod_modalidad = 11204][num_contrato = 99999]') from dual;
+
+
+--
+fondos
+
+"[cod_cia = " + cia + "][cod_ramo = " + ramo + "][dvcod_modalidad = " + mod + "][num_contrato = " + contrato + "][dvtip_perfil_inv  = '" + perfil + "'" + "][cod_mon = " + moneda + "]";
+
+[cod_cia = 1][cod_ramo = 112][dvcod_modalidad = 11204][num_contrato = 99999][dvtip_perfil_inv  = 'MOD'][cod_mon = 1]
+
+IMPULSA	0107
+HSBCDLP	0001
+HSBCMEX	0005
+HSBCCOR	0006
+HSBCUSA	0009
+Actigob	0104
+ActiMed	0111
+ACTI500	0101
+MAYA	0105
+
+Si el nombre del fondo coincide con alguno en lista en webconfig agrega el perfil de inversion tambien recorrido en su indice es decir si Actigob lo encuentra en lista (posicion 0) de webconfig a Actigob le corresponde el perfil de inversion de la posicion 0 (De la lista webconfig)

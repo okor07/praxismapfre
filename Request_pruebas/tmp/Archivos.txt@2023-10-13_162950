@@ -1,0 +1,233 @@
+wiNPiVGU
+Zona Aliados
+https://10.184.62.77/zonaliados/login.aspx
+
+
+Portal turistas
+https://10.184.62.78/Turistas/Turistastw/logon/logonS.aspx?cookies=S
+
+
+negocios especiales 
+https://negocios.mapfre.com.mx/VIPII/wAcceso/Acceso.aspx?cookies=S
+
+
+
+
+Sagis sin acceso (explorer)
+https://segaii.mapfre.com.mx/proveedores/acceso.aspx?cookies=S
+
+
+peritos (explorer)
+https://negociosuat.mapfre.com.mx/sigpemapfre/accesoS.aspx
+
+
+RAM(explorer)
+https://ramuat.mapfre.com.mx/ramprd/acceso/accesos.aspx?cookies=S
+
+
+portal apertura de clientes 
+https://negocios.mapfre.com.mx/AperturaExpedientes/acceso.aspx
+
+
+soap(explorer)
+https://negocios.mapfre.com.mx/CENTEL/Acceso.aspx?ReturnUrl=%2fcentel%2fMenuPpalGastosMedicos.aspx
+
+
+
+------------------Zona Aliados 
+User: usuprueb
+Pass: Mapfre123
+
+
+------------------PL/SQL
+tlrodrig
+SopVas$2020
+Jtrnprod
+
+
+
+
+UAT(si ya esta aqui ya esta listo para producción)
+https://10.184.62.77/zonaliados/login.aspx
+E2E
+https://10.184.62.88/zonaliados/login.aspx
+
+
+
+url ambientes (GAMA)
+
+http://10.184.48.150:5555 DESAROLLO
+
+http://10.184.49.100:5555 E2E
+
+http://10.184.49.210:5555 UAT
+
+----------------------------
+GIT
+
+Usuario: RDCM-at-673074916161
+Contraseña: TORi9WEySqSHXX87DTNhXwKG+123o4rp93S8yJJjutk=
+
+
+
+
+E:\Praxis\YCORONAG\Plastic\MMX_BD_TRONWEB
+
+
+
+-------------------------------Ejemplo de conexiones para desarrollo
+
+
+<!--<add name="ConnectionTW" connectionString="User ID=revisa;password=revisa;Data Source=JTRNUAT;Persist Security Info=False;Connection Lifetime=30;Enlist=true;Max Pool Size = 10;Min Pool Size=0;Pooling=true;" />-->  
+<add name="ConnectionTW" connectionString="User ID=USRWEB10;password=web;Data Source=JTRNDESA;Persist Security Info=False;Connection Lifetime=30;Enlist=true;Max Pool Size = 10;Min Pool Size=0;Pooling=true;" />  
+<!--<add name="ConnectionTW" connectionString="User ID=revisa;password=revisa;Data Source=JTRNE2E;Persist Security Info=False;Connection Lifetime=30;Enlist=true;Max Pool Size = 10;Min Pool Size=0;Pooling=true;" />-->
+
+
+--------------------------cambios de BD(integra)
+
+http://10.184.60.72:8091/integra/intDesInicio.jsp
+
+ADJHERNA
+
+ArPm&kdJtkQd6z5
+
+----------------------------BD JTRUAT
+usrweb35
+KQJC3567
+JTRNUAT
+
+****************************BD Desarrollo full
+usrweb10
+web
+
+***************************** maquina remota 
+10.184.48.78
+
+dltm000_pre\jjlopezs
+
+M4pfr32020
+
+*****************************
+
+fabrica
+Escritorio remoto 
+10.184.49.26
+dltm000\cmrodrig
+
+************Acceso a bases de ambientes previos(desarrollo)
+
+Username:  CMRODRIG
+Password: B423ery#ISLOWNew
+
+**************BD desarrollo 
+
+mcarmona
+M4pfre2022
+
+
+**************BD RAM y JTRN  (UAT-E2E)
+
+usuario: revisa
+contraseña: revisa
+
+
+******************** Aplicativo de Zona Aliados User And Pass
+
+Zona Aliados 
+User: usuprueb
+Pass: Mapfre123
+
+
+------------------- 
+plastic
+
+10.184.50.20:8087
+
+JJLOPEZS
+Mapfre.2023
+
+
+
+
+-------------------FileZilla
+10.184.60.16, 
+user: traspaso, 
+pass: traspaso1
+
+------------------Segapli (chrome)
+usuprueb
+Mapfre123
+
+
+---- vipii()negocios especiales
+
+mmiranda
+Mapfre123
+
+
+--- Diseñador UAT
+
+
+
+
+
+---------------------------------------------------videos drive
+https://cdrive.page.link/xAsxUjMyXJhaZybA9
+
+
+-------------------------------------------------------info drive
+https://cdrive.page.link/ZZ8bbkCYSMCvqFha8
+
+
+
+-------------------------------------------------------service manager 
+https://app.mapfre.com/smex/index.do?lang=es&mode=index.do&lo
+
+MMONTUFA
+Vanesa2022/%02
+
+
+citrix 
+https://accesoext.mapfre.com.mx/Citrix/MapfreWeb/
+
+
+
+-----------------------------------maqquina NMI
+
+10.184.48.78
+dltm000_pre\jjlopezs
+M4pfr32020
+
+
+------------------------------------validar cambios en integra si fueron aplicados o no 
+
+http://10.184.60.72:8091/plog/E2E/IINT145485_em_k_imp_dat_vida_mmx.pck
+
+
+
+
+E:\Praxis\YCORONAG\Plastic\MMX_BD_TRONWEB\TRONWEB\SISTEMA\BACKEND\PROGRAMAS\DISIMPRE\SI\pck
+
+E:\Praxis\YCORONAG\Plastic\MMX_BD_TRONWEB\TRONWEB\SISTEMA\BACKEND\PROGRAMAS\DISIMPREWEB\SI\pck\00
+
+
+-------------------------------obtener plantillas de Produccion 
+https://negocios.mapfre.com.mx/wsimpresion/service.asmx?op=getXMLDiseniador
+
+---------------otra cuenta citrix
+
+rcoellar
+
+los.preciosos.2023
+
+
+-----------------mail
+
+https://mail.praxisglobe.net:8443/
+
+
+
+------------ramprd
+
+GZAMORAP
+J9Ck3.Y8Pw.X
